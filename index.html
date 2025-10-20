@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alcedo Madruga | PHP Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #0a0a0a;
@@ -42,6 +43,7 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
         }
         
         .header-content {
@@ -197,42 +199,31 @@
             flex: 1;
             position: relative;
             perspective: 1000px;
-        }
-        
-        .cube {
-            width: 200px;
-            height: 200px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate 15s infinite linear;
-            margin: 0 auto;
-        }
-        
-        .face {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            backface-visibility: hidden;
         }
         
-        .front { transform: translateZ(100px); }
-        .back { transform: rotateY(180deg) translateZ(100px); }
-        .right { transform: rotateY(90deg) translateZ(100px); }
-        .left { transform: rotateY(-90deg) translateZ(100px); }
-        .top { transform: rotateX(90deg) translateZ(100px); }
-        .bottom { transform: rotateX(-90deg) translateZ(100px); }
+        .photo-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--accent);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
         
-        @keyframes rotate {
-            0% { transform: rotateX(0) rotateY(0); }
-            100% { transform: rotateX(360deg) rotateY(360deg); }
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
         
         /* Skills Section */
@@ -301,6 +292,23 @@
             justify-content: center;
             font-size: 3rem;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-image i {
+            position: relative;
+            z-index: 1;
         }
         
         .project-content {
@@ -315,6 +323,21 @@
         .project-content p {
             color: var(--text-secondary);
             margin-bottom: 15px;
+        }
+        
+        .project-features {
+            margin-bottom: 15px;
+        }
+        
+        .project-features span {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
         
         .project-link {
@@ -463,6 +486,11 @@
             .contact-content {
                 flex-direction: column;
             }
+            
+            .photo-container {
+                width: 250px;
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -505,13 +533,8 @@
                     <p>Atualmente, estou focado em expandir meus conhecimentos em desenvolvimento de APIs RESTful e microservices, sempre buscando novas oportunidades para crescer profissionalmente e contribuir com projetos inovadores.</p>
                 </div>
                 <div class="about-image">
-                    <div class="cube">
-                        <div class="face front">PHP</div>
-                        <div class="face back">API</div>
-                        <div class="face right">JS</div>
-                        <div class="face left">SQL</div>
-                        <div class="face top">UI/UX</div>
-                        <div class="face bottom">AGILE</div>
+                    <div class="photo-container">
+                        <img src="foto.png" alt="Alcedo Madruga">
                     </div>
                 </div>
             </div>
@@ -524,32 +547,32 @@
             <h2 class="section-title">Habilidades</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-icon">PHP</div>
+                    <div class="skill-icon"><i class="fab fa-php"></i></div>
                     <h3>Desenvolvimento PHP</h3>
                     <p>Desenvolvimento de aplicações web robustas utilizando PHP, com foco em código limpo e eficiente.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">API</div>
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
                     <h3>Integração de APIs</h3>
                     <p>Especializado em integração de serviços RESTful e desenvolvimento de endpoints eficientes.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">DB</div>
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <h3>MySQL</h3>
                     <p>Design e implementação de bancos de dados relacionais com MySQL, otimizados para performance.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">JS</div>
+                    <div class="skill-icon"><i class="fab fa-js"></i></div>
                     <h3>JavaScript</h3>
                     <p>Desenvolvimento front-end com JavaScript para criar interfaces dinâmicas e responsivas.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">AGILE</div>
+                    <div class="skill-icon"><i class="fas fa-tasks"></i></div>
                     <h3>Metodologias Ágeis</h3>
                     <p>Experiência em aplicação de metodologias ágeis para melhorar colaboração e entregas.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">UI/UX</div>
+                    <div class="skill-icon"><i class="fas fa-palette"></i></div>
                     <h3>Design de Interfaces</h3>
                     <p>Criação de interfaces intuitivas e visualmente agradáveis, integrando estética e funcionalidade.</p>
                 </div>
@@ -563,27 +586,83 @@
             <h2 class="section-title">Projetos</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">MMC</div>
+                    <div class="project-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <div class="project-content">
-                        <h3>Mais Mulheres na Ciência</h3>
-                        <p>Plataforma educativa com biblioteca de materiais, fórum de discussão e gestão de bolsas de estudo para apoiar mulheres na ciência.</p>
-                        <a href="https://www.maismulheresnaciencia.ao" class="project-link" target="_blank">Ver Projeto →</a>
+                        <h3>AstraSchool</h3>
+                        <p>Sistema de gestão escolar completo com soluções especializadas para excelência no processo educacional.</p>
+                        <div class="project-features">
+                            <span>Planejamento de Aulas</span>
+                            <span>Acompanhamento</span>
+                            <span>Avaliações</span>
+                            <span>Gestão de Turmas</span>
+                        </div>
+                        <a href="https://astraschool.ueuo.com/" class="project-link" target="_blank">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="project-image">EA</div>
+                    <div class="project-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>LavBal POS</h3>
+                        <p>Sistema de ponto de vendas completo para gestão de estabelecimentos comerciais.</p>
+                        <div class="project-features">
+                            <span>Vendas</span>
+                            <span>Estoque</span>
+                            <span>Relatórios</span>
+                            <span>Clientes</span>
+                        </div>
+                        <a href="https://lavbal.eu5.org/" class="project-link" target="_blank">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>IEIA São Júlio</h3>
+                        <p>Sistema de gestão para igreja e instituição com controle de membros, eventos e finanças.</p>
+                        <div class="project-features">
+                            <span>Gestão de Membros</span>
+                            <span>Eventos</span>
+                            <span>Finanças</span>
+                            <span>Relatórios</span>
+                        </div>
+                        <a href="https://ieia-saojulio.eu5.org/" class="project-link" target="_blank">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Mais Mulheres na Ciência</h3>
+                        <p>Plataforma educativa para apoiar mulheres na ciência com recursos educacionais e comunidade.</p>
+                        <div class="project-features">
+                            <span>Biblioteca</span>
+                            <span>Fórum</span>
+                            <span>Bolsas</span>
+                            <span>Comunidade</span>
+                        </div>
+                        <a href="https://www.maismulheresnaciencia.ao" class="project-link" target="_blank">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
                     <div class="project-content">
                         <h3>E-ÁFRICA</h3>
                         <p>Plataforma para associação que promove desenvolvimento sustentável através da cooperação euro-africana.</p>
-                        <a href="https://eafrica-ao.com" class="project-link" target="_blank">Ver Projeto →</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">API</div>
-                    <div class="project-content">
-                        <h3>Sistema de Gestão</h3>
-                        <p>Desenvolvimento de sistema institucional completo com design responsivo, backend robusto e integração de APIs.</p>
-                        <a href="#" class="project-link">Detalhes em breve →</a>
+                        <div class="projectfeatures">
+                            <span>Projetos</span>
+                            <span>Cooperação</span>
+                            <span>Desenvolvimento</span>
+                            <span>Sustentabilidade</span>
+                        </div>
+                        <a href="https://eafrica-ao.com" class="project-link" target="_blank">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -597,21 +676,21 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">📱</div>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
                         <div>
                             <h3>Telefone</h3>
                             <p>+244 921 703 737</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h3>Email</h3>
                             <p>alcedodev05@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
                             <h3>Localização</h3>
                             <p>Cuito Bié, Angola</p>
@@ -643,9 +722,9 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" class="social-link">in</a>
-                <a href="#" class="social-link">gh</a>
-                <a href="#" class="social-link">tw</a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
             </div>
             <p class="copyright">© 2023 Alcedo Madruga. Todos os direitos reservados.</p>
         </div>
