@@ -1,257 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-theme="dark">
+<html lang="pt-pt">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Alcedo Madruga | Fullstack Developer & API Expert</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcedo Madruga | Fullstack Engineer</title>
     
-    <!-- Google Fonts: Space Grotesk para um ar tech moderno -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Tipografia Tech: Space Grotesk e JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* Palette Dark Premium */
-            --bg-deep: #050508;
-            --bg-surface: #0a0a0f;
-            --accent-primary: #7c4dff; /* Violeta Elétrico */
-            --accent-secondary: #00e5ff; /* Cyan Neon */
-            --text-main: #f8f9fa;
-            --text-muted: #94a3b8;
-            --glass: rgba(15, 15, 25, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glow: 0 0 20px rgba(124, 77, 255, 0.3);
-            --transition: 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            --bg-dark: #08080c;
+            --surface: #11111a;
+            --accent: #00f2ff; /* Cyan para vibe Cyber */
+            --accent-dim: rgba(0, 242, 255, 0.15);
+            --text-primary: #f1f1f1;
+            --text-secondary: #94a3b8;
+            --font-code: 'JetBrains Mono', monospace;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.6;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* ========== BACKGROUND DYNAMICS ========== */
-        .mesh-bg {
+        /* Animação de Background */
+        .mesh {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(124, 77, 255, 0.05), transparent 50%),
-                        radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.03), transparent 30%);
+            background: 
+                radial-gradient(circle at 20% 30%, var(--accent-dim) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(124, 77, 255, 0.1) 0%, transparent 40%);
             z-index: -1;
         }
 
-        /* ========== NAVIGATION ========== */
-        header {
+        /* Navigation */
+        nav {
             position: fixed;
-            top: 0; width: 100%; height: 80px;
-            display: flex; align-items: center;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            background: var(--glass);
-        }
-
-        .nav-container {
-            width: 90%; max-width: 1200px; margin: 0 auto;
+            top: 0; width: 100%; height: 70px;
             display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 100;
         }
 
-        .logo {
-            font-size: 1.5rem; font-weight: 700;
-            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
+        .logo { font-family: var(--font-code); font-weight: 700; color: var(--accent); }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a {
-            color: var(--text-muted); text-decoration: none;
-            font-weight: 500; transition: var(--transition);
-            font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;
-        }
-        nav a:hover { color: var(--accent-secondary); text-shadow: var(--glow); }
-
-        /* ========== HERO SECTION ========== */
+        /* Hero Section */
         .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
+            height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             text-align: center; padding: 0 20px;
         }
 
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px;
+        .code-badge {
+            font-family: var(--font-code);
+            background: var(--surface);
+            padding: 8px 16px; border-radius: 6px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.9rem; margin-bottom: 24px;
+            animation: fadeInDown 1s ease;
         }
 
-        .hero-content span {
-            background: linear-gradient(90deg, #fff, var(--text-muted));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 700; margin-bottom: 16px; }
+        .glitch-text { color: var(--text-secondary); max-width: 700px; margin-bottom: 32px; }
 
-        .highlight { color: var(--accent-primary); -webkit-text-fill-color: initial; }
-
-        .hero-p {
-            color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px;
-        }
-
-        /* ========== GRID DOS PROJETOS ========== */
-        .section-padding { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
-
-        .grid-projects {
+        /* Estilo de Card de Código (UI UX Dev) */
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px; margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px; padding: 100px 5%;
         }
 
-        .card {
-            background: var(--bg-surface);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px; padding: 40px;
-            transition: var(--transition);
-            position: relative; overflow: hidden;
+        .dev-card {
+            background: var(--surface);
+            border-radius: 12px; padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative; transition: var(--transition);
         }
 
-        .card:hover {
+        .dev-card:hover {
             transform: translateY(-10px);
-            border-color: var(--accent-primary);
-            box-shadow: var(--glow);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .card i {
-            font-size: 2.5rem; color: var(--accent-secondary); margin-bottom: 20px;
-            display: block;
+        .card-header { display: flex; gap: 8px; margin-bottom: 20px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+
+        .dev-card h3 { font-family: var(--font-code); color: var(--accent); margin-bottom: 12px; }
+        .tech-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .tag { font-family: var(--font-code); font-size: 0.75rem; color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; }
+
+        /* Botões */
+        .btn {
+            padding: 12px 30px; border-radius: 8px;
+            text-decoration: none; font-weight: 500;
+            transition: var(--transition); display: inline-block;
+        }
+        .btn-primary { background: var(--accent); color: var(--bg-dark); }
+        .btn-primary:hover { filter: brightness(1.1); transform: scale(1.05); }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        
-        .tag-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .tag {
-            background: rgba(124, 77, 255, 0.1);
-            color: var(--accent-primary);
-            padding: 5px 15px; border-radius: 50px; font-size: 0.8rem;
-            border: 1px solid rgba(124, 77, 255, 0.2);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ========== BUTTONS ========== */
-        .cta-button {
-            background: var(--accent-primary); color: white;
-            padding: 15px 35px; border-radius: 12px;
-            text-decoration: none; font-weight: 700;
-            display: inline-block; transition: var(--transition);
-            box-shadow: var(--glow);
-        }
-
-        .cta-button:hover {
-            background: #6a3de8; transform: scale(1.05);
-        }
-
-        /* ========== FOOTER ========== */
-        footer {
-            padding: 60px 0; border-top: 1px solid var(--glass-border);
-            text-align: center; color: var(--text-muted);
-        }
-
-        /* ========== ANIMATIONS ========== */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .floating { animation: float 6s ease-in-out infinite; }
-
+        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
 
-    <div class="mesh-bg"></div>
+    <div class="mesh"></div>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">ALCEDO.DEV</div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#projects">Work</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <nav>
+        <div class="logo">AM.DEV ( )</div>
+        <div class="socials">
+            <a href="https://linkedin.com/in/alcedo-madruga" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
         </div>
-    </header>
+    </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="tag" style="display:inline-block; margin-bottom:20px;">DISPONÍVEL PARA PROJETOS</div>
-            <h1>Engenheiro de <br><span>Software <span class="highlight">Fullstack</span></span></h1>
-            <p class="hero-p">Especialista em ecossistemas PHP/Laravel e arquiteturas de API robustas. Transformo ideias em produtos digitais de alta performance.</p>
-            <div style="display: flex; gap: 20px; justify-content: center;">
-                <a href="#projects" class="cta-button">Ver Portfólio</a>
-                <a href="#contact" class="cta-button" style="background: transparent; border: 1px solid var(--glass-border); box-shadow: none;">Falar Comigo</a>
-            </div>
+    <section class="hero">
+        <div class="code-badge">Fullstack_Developer.init()</div>
+        <h1>Alcedo Madruga</h1>
+        <p class="glitch-text">Engenheiro de Software focado em arquiteturas robustas com <strong>PHP/Laravel</strong>, <strong>React</strong> e <strong>Node.js</strong>. Atualmente a transformar o mercado digital em Angola.</p>
+        <div class="btns">
+            <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
         </div>
     </section>
 
-    <section class="section-padding" id="projects">
-        <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Projetos Selecionados</h2>
-        <p style="color: var(--text-muted);">Soluções desenvolvidas com foco em escalabilidade e UI/UX.</p>
-        
-        <div class="grid-projects">
-            <!-- Projeto 1 -->
-            <div class="card">
-                <i class="fas fa-rocket"></i>
-                <h3>Bazar Angola</h3>
-                <p>Marketplace de nova geração focado no mercado angolano, com gestão avançada de stock e pagamentos integrados.</p>
-                <div class="tag-group">
-                    <span class="tag">Laravel</span>
-                    <span class="tag">React Native</span>
-                    <span class="tag">MySQL</span>
-                </div>
+    <section id="projetos" class="project-grid">
+        <!-- Bazar Angola -->
+        <div class="dev-card reveal">
+            <div class="card-header">
+                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
             </div>
-
-            <!-- Projeto 2 -->
-            <div class="card">
-                <i class="fas fa-university"></i>
-                <h3>AstraSchool</h3>
-                <p>ERP Educacional completo. Gestão de matrículas, notas e portal do aluno com arquitetura modular.</p>
-                <div class="tag-group">
-                    <span class="tag">PHP 8.2</span>
-                    <span class="tag">API REST</span>
-                    <span class="tag">PostgreSQL</span>
-                </div>
-            </div>
-
-            <!-- Projeto 3 -->
-            <div class="card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Cyber Stress Test</h3>
-                <p>Ferramenta de análise de vulnerabilidades e rate-limiting para aplicações web críticas.</p>
-                <div class="tag-group">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Cybersecurity</span>
-                    <span class="tag">Redis</span>
-                </div>
+            <h3>Bazar Angola</h3>
+            <p>Marketplace completo em desenvolvimento para o mercado angolano. Foco em escalabilidade e UI intuitiva.</p>
+            <div class="tech-tags">
+                <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span>
             </div>
         </div>
-    </section>
 
-    <section class="section-padding" style="text-align: center;">
-        <div class="card" style="background: linear-gradient(135deg, var(--accent-primary), #4527a0); color: white;">
-            <h2 style="font-size: 2rem; margin-bottom: 20px;">Vamos construir algo incrível?</h2>
-            <p style="margin-bottom: 30px; opacity: 0.9;">Estou sempre aberto a discutir novos desafios e parcerias estratégicas.</p>
-            <a href="mailto:contato@alcedo.dev" class="cta-button" style="background: white; color: var(--accent-primary); box-shadow: none;">Enviar E-mail</a>
+        <!-- Astra-Market -->
+        <div class="dev-card reveal">
+            <div class="card-header">
+                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            </div>
+            <h3>Astra-Market</h3>
+            <p>Desenvolvimento do MVP focado em comércio eletrónico e gestão de produtos.</p>
+            <div class="tech-tags">
+                <span class="tag">PHP 8.x</span><span class="tag">Tailwind</span><span class="tag">MVC</span>
+            </div>
+        </div>
+
+        <!-- Cybersecurity & APIs -->
+        <div class="dev-card reveal">
+            <div class="card-header">
+                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            </div>
+            <h3>Cyber & APIs</h3>
+            <p>Especialista em segurança de aplicações web e desenvolvimento de APIs para processamento de pagamentos.</p>
+            <div class="tech-tags">
+                <span class="tag">Node.js</span><span class="tag">Cybersecurity</span><span class="tag">API REST</span>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Alcedo Madruga. Desenvolvido em Angola para o mundo.</p>
-        <div class="tag-group" style="justify-content: center; margin-top: 20px;">
-            <a href="#" style="color: inherit;"><i class="fab fa-github"></i></a>
-            <a href="#" style="color: inherit;"><i class="fab fa-linkedin"></i></a>
-            <a href="#" style="color: inherit;"><i class="fab fa-instagram"></i></a>
-        </div>
+        <p>&copy; 2026 Alcedo Madruga | Estudante de Engenharia Informática no ISPN</p>
     </footer>
 
+    <script>
+        // Efeito de Revelação ao Rolar (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Efeito de Digitação sutil no Console
+        console.log("%c Alcedo Madruga - Portfolio Loaded", "color: #00f2ff; font-weight: bold; font-size: 15px;");
+    </script>
 </body>
 </html>
