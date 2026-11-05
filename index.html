@@ -1,208 +1,333 @@
-<!DOCTYPE html>
-<html lang="pt-pt">
+<!doctype html>
+<html lang="pt-PT">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alcedo Madruga | Fullstack Engineer</title>
-    
-    <!-- Tipografia Tech: Space Grotesk e JetBrains Mono -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alcedo Madruga | Full Stack &amp; Systems Engineer</title>
+<meta name="description" content="Alcedo Madruga, engenheiro de software full stack do Bié. APIs escaláveis, microsserviços e bases de dados com Laravel, React e Next.js. Projectos: Bazar Angola, AstraSchool, Sennder POS e VIVA+.">
+<meta name="author" content="Alcedo Madruga">
+<meta name="theme-color" content="#111111">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Alcedo Madruga | Full Stack &amp; Systems Engineer">
+<meta property="og:description" content="Engenheiro full stack e empreendedor do Bié. Melhor Start-up do ANGOTIC 2026 com a VIVA+.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111;--fg:#d8d8d8;--mut:#858585;--soft:#a9a9a9;--line:#494949;--hov:#fff}
+[data-theme=light]{--bg:#d6d6d1;--fg:#161616;--mut:#555;--soft:#3a3a3a;--line:#9a9a94;--hov:#000}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-width:320px;min-height:100vh;background:var(--bg);color:var(--fg);font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}ul{list-style:none}
+:focus-visible{outline:1px solid currentColor;outline-offset:5px}
 
-    <style>
-        :root {
-            --bg-dark: #08080c;
-            --surface: #11111a;
-            --accent: #00f2ff; /* Cyan para vibe Cyber */
-            --accent-dim: rgba(0, 242, 255, 0.15);
-            --text-primary: #f1f1f1;
-            --text-secondary: #94a3b8;
-            --font-code: 'JetBrains Mono', monospace;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+/* aparecer ao rolar */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* elementos fixos */
+.side{position:fixed;top:56px;left:56px;z-index:60}
+nav{display:flex;flex-direction:column;gap:17px}
+nav a{position:relative;width:fit-content;font-size:12px;line-height:1;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);transition:color .18s}
+nav a:hover,nav a.on{color:var(--fg)}
+nav a.on::after{content:"";position:absolute;left:0;top:calc(100% + 8px);width:82px;height:1px;background:currentColor}
+.social{display:flex;flex-direction:column;gap:22px;margin-top:38px}
+.social a{display:grid;place-items:center;width:19px;height:19px;opacity:.9;transition:opacity .18s,transform .18s}
+.social a:hover{opacity:1;transform:translateX(2px)}
+.social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.social svg.f{fill:currentColor;stroke:none;width:16px;height:16px}
+.foot{position:fixed;bottom:56px;left:56px;z-index:60;font-size:10px;white-space:nowrap}
+#theme{position:fixed;top:56px;right:56px;z-index:60;width:61px;height:28px;padding:2px;border:1px solid currentColor;border-radius:999px;background:transparent;opacity:.86;cursor:pointer}
+#theme span{display:block;width:22px;height:22px;border-radius:50%;background:currentColor;transition:transform .24s;transform:translateX(33px)}
+[data-theme=light] #theme span{transform:none}
+#dot{position:fixed;top:0;left:0;z-index:100;width:10px;height:10px;border-radius:50%;background:var(--fg);opacity:0;pointer-events:none;transition:opacity .2s;will-change:transform}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+/* capas */
+.cover{position:relative;display:grid;min-height:100svh;padding:56px;gap:0 clamp(24px,3vw,68px);overflow:hidden;grid-template-columns:146px minmax(440px,1fr) minmax(340px,.76fr);grid-template-rows:minmax(272px,.8fr) minmax(230px,.72fr) minmax(150px,.48fr)}
+.cover.sub{min-height:calc(100svh - 136px)}
+.hero{grid-column:2;grid-row:1;align-self:start;padding-top:17px}
+.big{display:flex;flex-direction:column;width:max-content;max-width:100%;font-size:clamp(96px,8.8vw,138px);line-height:.83;font-weight:200;letter-spacing:.045em;white-space:nowrap;transition:text-shadow .25s}
+.big span+span{margin-top:28px}
+.big.num span:first-child{font-size:48px}
+.big:hover{text-shadow:calc(var(--f,6px)*-1) 0 #ff1744,var(--f,6px) 0 #00e5ff,calc(var(--f,6px)*1.6) 0 #ffd400}
+.prof{margin-top:16px;font-size:13px}
+.summary{grid-column:3;grid-row:2;align-self:start;padding-top:2px;max-width:630px;font-size:16px;line-height:1.6;letter-spacing:.05em}
+.contact{grid-column:2;grid-row:2;align-self:end;padding-bottom:32px;font-size:13px;line-height:1.35}
+.contact a{display:block;width:fit-content}.contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.year{grid-column:3;grid-row:3;align-self:end;justify-self:end;margin-bottom:-.12em;font-size:clamp(58px,6vw,94px);line-height:1;font-weight:200;letter-spacing:.08em;opacity:.08;user-select:none;text-shadow:-2px 0 #00e5ff,2px 0 #ff1744}
 
-        /* Animação de Background */
-        .mesh {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, var(--accent-dim) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(124, 77, 255, 0.1) 0%, transparent 40%);
-            z-index: -1;
-        }
+/* conteúdo */
+.wrap{max-width:1600px;margin:0 auto;padding:0 56px 176px 250px}
+.wrap section+section{padding-top:160px}
+h3{margin-bottom:32px;font-size:15px;font-weight:300;letter-spacing:.08em;text-transform:uppercase}
+.list{border-top:1px solid var(--line)}
+.ab{max-width:760px;padding:32px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.75;letter-spacing:.04em;color:var(--soft)}
+.ab p+p{margin-top:20px}
+.ab b{font-weight:400;color:var(--fg)}
+.row{display:grid;grid-template-columns:180px 260px minmax(260px,1fr);gap:0 40px;padding:32px 0;border-bottom:1px solid var(--line)}
+.row:hover{opacity:.8}
+.per{font-size:clamp(20px,2.1vw,31px);line-height:1;font-weight:200;letter-spacing:.04em}
+.row h4{font-size:13px;line-height:1.45;font-weight:400;letter-spacing:.08em}
+.row .inst{margin-top:8px;font-size:11px;letter-spacing:.08em;color:var(--mut)}
+.det{max-width:540px;font-size:16px;line-height:1.7;letter-spacing:.045em;color:var(--soft)}
+.det li{position:relative;padding-left:16px;margin-top:8px}
+.det li:first-child{margin-top:0}
+.det li::before{content:"";position:absolute;left:0;top:.78em;width:6px;height:1px;background:currentColor;opacity:.6}
+.tech{display:grid;grid-template-columns:repeat(3,1fr);gap:0 48px;padding-top:36px;border-top:1px solid var(--line)}
+.tech h4{font-size:13px;font-weight:400;letter-spacing:.14em;color:var(--mut)}
+.tech ul{margin-top:24px}
+.tech li{width:fit-content;margin-bottom:12px;font-size:clamp(13px,1.8vw,15px);font-weight:200;letter-spacing:.02em;transition:opacity .2s,transform .2s}
+.tech li:hover{opacity:.6;transform:translateX(2px)}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0; width: 100%; height: 70px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            z-index: 100;
-        }
+/* projectos */
+.phead{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding-bottom:32px}
+.phead h3{margin:0}
+.phead p{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.plist{isolation:isolate;border-top:1px solid var(--line)}
+.pw{min-height:48svh}
+.proj{display:grid;grid-template-columns:72px minmax(0,1fr) 150px;gap:0 40px;padding:clamp(48px,6vw,86px) 0;background:var(--bg);border-bottom:1px solid var(--line);transition:border-color .3s;position:sticky;top:120px}
+.proj:hover,.proj:focus-within{border-color:var(--mut)}
+.pn{padding-top:8px;font-size:11px;letter-spacing:.14em;color:var(--mut);transition:color .3s}
+.proj:hover .pn{color:var(--fg)}
+.pn .y{display:none}
+.pt{display:block;width:fit-content;font-size:clamp(40px,5vw,78px);line-height:.95;font-weight:200;letter-spacing:.025em;transition:color .3s,transform .3s}
+.pt h4{font:inherit;letter-spacing:inherit}
+.proj:hover .pt,.proj:focus-within .pt{transform:translateX(4px);color:var(--hov)}
+.st{width:fit-content;margin-top:20px;padding:4px 12px;border:1px solid var(--mut);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.pd{max-width:650px;margin-top:28px;font-size:16px;line-height:1.65;letter-spacing:.045em;color:var(--soft)}
+.pk{margin-top:24px;font-size:10px;line-height:1.7;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.pr{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+.pr .y{font-size:11px;letter-spacing:.12em}
+.gh{display:flex;gap:8px;align-items:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:opacity .3s}
+.gh:hover{opacity:.6}
+.gh i{font-style:normal;font-size:16px;line-height:1;transition:transform .3s}
+.proj:hover .gh i{transform:translate(4px,-4px)}
 
-        .logo { font-family: var(--font-code); font-weight: 700; color: var(--accent); }
+.per.s{font-size:13px;line-height:1.5;font-weight:300;letter-spacing:.06em;color:var(--soft)}
+.av{max-width:640px;margin:-8px 0 32px;font-size:16px;line-height:1.7;letter-spacing:.04em;color:var(--soft)}
+/* contacto */
+#contacto{min-height:90svh}
+.ct{display:grid;grid-template-columns:180px 1fr;gap:0 40px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--line)}
+.ct small{font-size:11px;letter-spacing:.14em;color:var(--mut)}
+.ct a{width:fit-content;font-size:clamp(20px,3vw,42px);font-weight:200;letter-spacing:.02em;overflow-wrap:anywhere;transition:transform .3s,color .3s}
+.ct a:hover{transform:translateX(6px);color:var(--hov)}
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px;
-        }
-
-        .code-badge {
-            font-family: var(--font-code);
-            background: var(--surface);
-            padding: 8px 16px; border-radius: 6px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            font-size: 0.9rem; margin-bottom: 24px;
-            animation: fadeInDown 1s ease;
-        }
-
-        h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 700; margin-bottom: 16px; }
-        .glitch-text { color: var(--text-secondary); max-width: 700px; margin-bottom: 32px; }
-
-        /* Estilo de Card de Código (UI UX Dev) */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px; padding: 100px 5%;
-        }
-
-        .dev-card {
-            background: var(--surface);
-            border-radius: 12px; padding: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-            position: relative; transition: var(--transition);
-        }
-
-        .dev-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .card-header { display: flex; gap: 8px; margin-bottom: 20px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-
-        .dev-card h3 { font-family: var(--font-code); color: var(--accent); margin-bottom: 12px; }
-        .tech-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .tag { font-family: var(--font-code); font-size: 0.75rem; color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; }
-
-        /* Botões */
-        .btn {
-            padding: 12px 30px; border-radius: 8px;
-            text-decoration: none; font-weight: 500;
-            transition: var(--transition); display: inline-block;
-        }
-        .btn-primary { background: var(--accent); color: var(--bg-dark); }
-        .btn-primary:hover { filter: brightness(1.1); transform: scale(1.05); }
-
-        /* Animações */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); }
-    </style>
+@media(max-width:1050px){
+.cover{grid-template-columns:110px minmax(0,1fr);grid-template-rows:auto auto auto 90px;gap:72px 32px;overflow:visible}
+.hero{grid-row:1}.summary{grid-column:2;grid-row:2;max-width:560px;width:100%}
+.contact{grid-column:2;grid-row:3;align-self:start;padding:0}.year{grid-column:2;grid-row:4}
+.wrap{padding-left:210px}}
+@media(max-width:900px){.row{grid-template-columns:150px 1fr;gap:16px 32px}.det{grid-column:2}.tech{grid-template-columns:repeat(2,1fr);gap:64px 48px}}
+@media(max-width:780px){.proj{grid-template-columns:48px minmax(0,1fr);gap:0 20px}.pr{grid-column:2;flex-direction:row;align-items:center;margin-top:32px}}
+@media(max-width:680px){
+.side{top:22px;left:22px;right:22px}nav{flex-direction:row;gap:20px;width:calc(100% - 76px)}nav a{font-size:10px}nav a.on::after{width:100%}
+.social{flex-direction:row;gap:28px;margin-top:30px}
+.foot{bottom:22px;left:22px}
+#theme{top:22px;right:22px;width:48px;height:23px}#theme span{width:17px;height:17px;transform:translateX(25px)}[data-theme=light] #theme span{transform:none}
+.cover{display:flex;flex-direction:column;min-height:100svh;padding:22px;gap:0}
+.hero{padding-top:110px}.cover.sub .hero{padding-top:70px}
+.big{font-size:clamp(60px,17vw,86px);letter-spacing:.005em}.big span+span{margin-top:18px}
+.prof{margin-top:14px;font-size:11px}
+.summary{margin-top:88px;width:calc(100vw - 44px);max-width:100%;overflow-wrap:anywhere}
+.contact{margin-top:72px}.year{margin-top:64px}
+.wrap{padding:112px 22px 128px}.wrap section+section{padding-top:112px}
+h3{margin-bottom:24px}
+.row{grid-template-columns:1fr;padding:28px 0}.det{grid-column:1}
+.proj{grid-template-columns:1fr}.pn{display:flex;justify-content:space-between;padding:0}.pn .y{display:inline}
+.pb{margin-top:28px}.pt{font-size:clamp(36px,12vw,58px)}.pr{grid-column:1}.pr .y{display:none}
+.ct{grid-template-columns:1fr;gap:8px}}
+@media(max-width:520px){.tech{grid-template-columns:1fr}}
+@media(max-width:1023px){.proj{position:static}.pw{min-height:0}}
+@media(hover:none){#dot{display:none}.big:hover{text-shadow:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#dot{display:none}.big:hover{text-shadow:none}.rv{opacity:1;transform:none;transition:none}}
+</style>
 </head>
 <body>
+<span id="dot" aria-hidden="true"></span>
 
-    <div class="mesh"></div>
+<div class="side">
+  <nav aria-label="Navegação principal">
+    <a href="#home" data-s="home" class="on">Início</a>
+    <a href="#sobre" data-s="sobre">Sobre</a>
+    <a href="#projectos" data-s="projectos">Projectos</a>
+    <a href="#contacto" data-s="contacto">Contacto</a>
+  </nav>
+  <div class="social" aria-label="Redes sociais">
+    <a href="https://www.linkedin.com/in/alcedo-dev-28574035b" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://github.com/alcedode" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+    <a href="https://x.com/AlcedoDev62117" target="_blank" rel="noreferrer" aria-label="X" title="X"><svg class="f" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="mailto:alcedodev05@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+  </div>
+</div>
+<button id="theme" type="button" role="switch" aria-checked="false" aria-label="Ativar tema claro"><span></span></button>
+<footer class="foot">© 2026 Alcedo Madruga</footer>
 
-    <nav>
-        <div class="logo">AM.DEV ( )</div>
-        <div class="socials">
-            <a href="https://linkedin.com/in/alcedo-madruga" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </nav>
+<main>
+  <section id="home" class="cover" aria-labelledby="hero-title">
+    <div class="hero rv">
+      <h1 class="big" id="hero-title"><span>ALCEDO</span><span>MADRUGA</span></h1>
+      <p class="prof">Full Stack &amp; Systems Engineer | APIs · Microsserviços · Bases de dados</p>
+    </div>
+    <p class="summary rv" data-sum></p>
+    <div class="contact rv"><p>Entre em contacto</p><a href="mailto:alcedodev05@gmail.com">alcedodev05@gmail.com</a></div>
+    <span class="year" aria-hidden="true">2026</span>
+  </section>
 
-    <section class="hero">
-        <div class="code-badge">Fullstack_Developer.init()</div>
-        <h1>Alcedo Madruga</h1>
-        <p class="glitch-text">Engenheiro de Software focado em arquiteturas robustas com <strong>PHP/Laravel</strong>, <strong>React</strong> e <strong>Node.js</strong>. Atualmente a transformar o mercado digital em Angola.</p>
-        <div class="btns">
-            <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
-        </div>
-    </section>
+  <section id="sobre" aria-labelledby="about-title">
+    <div class="cover sub">
+      <div class="hero rv">
+        <h2 class="big num" id="about-title"><span>01</span><span>SOBRE</span></h2>
+        <p class="prof">Full Stack &amp; Systems Engineer | APIs · Microsserviços · Bases de dados</p>
+      </div>
+      <p class="summary rv" data-sum></p>
+      <div class="contact rv"><p>Entre em contacto</p><a href="mailto:alcedodev05@gmail.com">alcedodev05@gmail.com</a></div>
+      <span class="year" aria-hidden="true">2026</span>
+    </div>
+    <div class="wrap">
+      <section aria-labelledby="eu"><h3 id="eu" class="rv">Sobre mim</h3>
+        <div class="list rv"><div class="ab">
+          <p><b>Alcedo Madruga</b> é engenheiro de software full stack, empreendedor e estudante no Instituto Superior Politécnico Ndunduma, no Bié. Trabalha com TypeScript (Next.js, React) e PHP (Laravel), e dedica-se a APIs REST de alto desempenho, microsserviços em tempo real, motores de pagamento resilientes e modelação de bases de dados.</p>
+          <p>Construiu soluções completas: um marketplace multi-vendedor, um SaaS de gestão escolar com facturação em conformidade com a AGT e um POS offline-first com licença ligada ao hardware. A sua engenharia segue Clean Architecture, DDD, SOLID e boas práticas de segurança (OWASP Top 10).</p>
+          <p>Integrou a equipa da <b>VIVA+</b>, ao lado de Isabel Sapesse: uma pulseira inteligente e uma aplicação que acompanham sinais vitais e saúde materna em tempo real. O projecto venceu o prémio de Melhor Start-up do ANGOTIC 2026 e o FETIC Provincial do Bié.</p>
+          <p>Actualmente estuda Java back-end e continua a aprofundar arquitectura de sistemas.</p>
+        </div></div></section>
+      <section aria-labelledby="exp"><h3 id="exp" class="rv">Prémios e reconhecimentos</h3><div class="list" id="exp-list"></div></section>
+      <section aria-labelledby="api"><h3 id="api" class="rv">APIs e microsserviços</h3><div class="list" id="api-list"></div></section>
+      <section aria-labelledby="eng"><h3 id="eng" class="rv">Princípios de engenharia</h3><div class="list" id="eng-list"></div></section>
+      <section aria-labelledby="edu"><h3 id="edu" class="rv">Formação</h3><div class="list" id="edu-list"></div></section>
+      <section aria-labelledby="tec"><h3 id="tec" class="rv">Tecnologias</h3><div class="tech rv" id="tech-list"></div></section>
+    </div>
+  </section>
 
-    <section id="projetos" class="project-grid">
-        <!-- Bazar Angola -->
-        <div class="dev-card reveal">
-            <div class="card-header">
-                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-            </div>
-            <h3>Bazar Angola</h3>
-            <p>Marketplace completo em desenvolvimento para o mercado angolano. Foco em escalabilidade e UI intuitiva.</p>
-            <div class="tech-tags">
-                <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span>
-            </div>
-        </div>
+  <section id="projectos" aria-labelledby="proj-title">
+    <div class="cover sub">
+      <div class="hero rv">
+        <h2 class="big num" id="proj-title"><span>02</span><span>PROJECTOS</span></h2>
+        <p class="prof">Full Stack &amp; Systems Engineer | APIs · Microsserviços · Bases de dados</p>
+      </div>
+      <p class="summary rv">Uma selecção de projectos: marketplace, gestão escolar com facturação AGT, ponto de venda offline-first e saúde digital.</p>
+      <div class="contact rv"><p>Entre em contacto</p><a href="mailto:alcedodev05@gmail.com">alcedodev05@gmail.com</a></div>
+      <span class="year" aria-hidden="true">2026</span>
+    </div>
+    <div class="wrap">
+      <header class="phead rv"><h3>Projectos seleccionados</h3><p id="pcount"></p></header>
+      <div class="plist" id="plist"></div>
+    </div>
+  </section>
 
-        <!-- Astra-Market -->
-        <div class="dev-card reveal">
-            <div class="card-header">
-                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-            </div>
-            <h3>Astra-Market</h3>
-            <p>Desenvolvimento do MVP focado em comércio eletrónico e gestão de produtos.</p>
-            <div class="tech-tags">
-                <span class="tag">PHP 8.x</span><span class="tag">Tailwind</span><span class="tag">MVC</span>
-            </div>
-        </div>
+  <section id="contacto" aria-labelledby="ct-title">
+    <div class="wrap" style="padding-top:160px">
+      <h3 id="ct-title" class="rv">Contacto</h3>
+      <p class="av rv">Disponível para trabalho remoto internacional, posições full stack / back-end sénior e consultoria de arquitectura de software.</p>
+      <div class="list" id="ct-list"></div>
+    </div>
+  </section>
+</main>
 
-        <!-- Cybersecurity & APIs -->
-        <div class="dev-card reveal">
-            <div class="card-header">
-                <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-            </div>
-            <h3>Cyber & APIs</h3>
-            <p>Especialista em segurança de aplicações web e desenvolvimento de APIs para processamento de pagamentos.</p>
-            <div class="tech-tags">
-                <span class="tag">Node.js</span><span class="tag">Cybersecurity</span><span class="tag">API REST</span>
-            </div>
-        </div>
-    </section>
+<script>
+const SUM="Engenheiro de software full stack e empreendedor do Bié. Construo APIs escaláveis, microsserviços e sistemas de facturação com Laravel, React e Next.js. Vencedor do ANGOTIC 2026 com a VIVA+.";
 
-    <footer>
-        <p>&copy; 2026 Alcedo Madruga | Estudante de Engenharia Informática no ISPN</p>
-    </footer>
+const premios=[
+{p:"2026",t:"MELHOR START-UP · ANGOTIC 2026",i:"BIÉ · VIVA+",h:["Prémio de Melhor Start-up da 6.ª edição, entre dezenas de projectos de várias províncias.","Solução tecnológica para a saúde materna: pulseira inteligente e aplicação."]},
+{p:"BIÉ",t:"1.º LUGAR · FETIC PROVINCIAL",i:"VIVA+",h:["Reconhecimento pela engenharia e pelo impacto social do produto."]}];
+const apis=[
+{p:"NestJS · Redis · PostgreSQL",t:"PAYMENTS & BILLING MICROSERVICE",i:"API RESTFUL · MOTOR FINANCEIRO",h:["Intermedeia transacções via Stripe (PaymentIntents, Subscriptions) e webhooks de PSPs Multicaixa Express / referências MCX.","Idempotency Keys em Redis para evitar dupla cobrança, validação de assinaturas dos webhooks e erros no padrão RFC 7807."]},
+{p:"Node.js · Socket.IO · Redis",t:"REAL-TIME NOTIFICATION GATEWAY",i:"WEBSOCKETS · WHATSAPP BUSINESS API",h:["Notificações instantâneas de pedidos, e-mails transaccionais e alertas por WhatsApp.","Controlo de presença e heartbeat, com retentativas exponenciais em falhas de APIs de terceiros."]},
+{p:"NestJS · PostGIS · TypeORM",t:"GEO-LOCATION & STORE DISCOVERY API",i:"API RESTFUL GEOESPACIAL",h:["Calcula distâncias entre consumidores e vendedores em tempo real.","Consultas espaciais com ST_DWithin e ST_DistanceSphere sobre índices GiST."]}];
+const principios=[
+{p:"Código",t:"CLEAN CODE E DDD",h:["Separação clara entre controllers, services, repositories e entidades de domínio, para um código testável e fácil de manter."]},
+{p:"Resiliência",t:"PROCESSAMENTO ASSÍNCRONO",h:["Filas e arquitecturas orientadas a eventos nas tarefas pesadas, mantendo baixo o tempo de resposta das rotas da API."]},
+{p:"Segurança",t:"INTEGRIDADE DE DADOS",h:["Operações financeiras em transacções atómicas com isolamento adequado, auditoria de logs e protecção contra vulnerabilidades conhecidas."]}];
+const formacao=[
+{p:"EM CURSO",t:"ENGENHARIA INFORMÁTICA",i:"INSTITUTO SUPERIOR POLITÉCNICO NDUNDUMA"},
+{p:"ACTUAL",t:"ESTUDO DE JAVA BACK-END",i:"FORMAÇÃO COMPLEMENTAR"}];
+const tecnologias=[
+["LINGUAGENS",["TypeScript","JavaScript (ES6+)","PHP","C# (.NET Core)","Go","SQL","Java · em estudo"]],
+["APIs E BACK-END",["NestJS","Laravel","Express.js","ASP.NET Core","FastAPI","REST · OpenAPI","WebSockets · SSE","gRPC · GraphQL","OAuth 2.0 · JWT"]],
+["BASES DE DADOS",["PostgreSQL · PostGIS","MySQL / MariaDB","SQLite","Redis","Prisma · TypeORM"]],
+["FRONT-END E MOBILE",["Next.js","React.js","React Native","Vue.js","Tailwind CSS","Shadcn/UI","Framer Motion"]],
+["MENSAGERIA",["BullMQ","RabbitMQ","Pub/Sub","Event-Driven Architecture"]],
+["DEVOPS",["Docker","Nginx","GitHub Actions","OpenTelemetry"]]];
+const GH="https://github.com/alcedode";
+const projectos=[
+{n:"01",name:"BAZAR ANGOLA",y:"Marketplace",d:"Marketplace multi-vendedor que liga compradores e vendedores em Angola, com geolocalização e automação de vendas. Pesquisa de lojas e produtos por raio geográfico com PostGIS, notificações e estados de pedidos por WebSockets, e painel multi-tenant com controlo de acessos por papéis (RBAC).",t:["Next.js","React","Laravel","PostgreSQL · PostGIS","Redis","Leaflet · OSM","WhatsApp API"],u:GH,l:"GitHub"},
+{n:"02",name:"ASTRASCHOOL (SGAE)",y:"SaaS",d:"SaaS de gestão escolar e facturação para instituições de ensino: matrículas, notas, boletins e contabilidade. O módulo financeiro cumpre as regras da AGT (retenções na fonte e hash de documentos), as médias são calculadas com transacções ACID e os dados ficam isolados por instituição.",t:["Laravel","MySQL","React","Docker","Geração de PDFs"],u:GH,l:"GitHub"},
+{n:"03",name:"SENNDER POS",y:"POS",d:"Software de ponto de venda offline-first para retalho, com facturação electrónica e licença ligada ao hardware. Vendas e facturas funcionam sem internet (SQLite local) e sincronizam de forma bidireccional e incremental com a API Laravel quando a ligação volta.",t:["C# .NET Core","WPF","SQLite","Laravel API","PostgreSQL"],u:GH,l:"GitHub"},
+{n:"04",name:"VIVA+",y:"IoT e saúde",d:"Pulseira inteligente e aplicação que monitorizam sinais vitais e saúde materna de forma contínua, com alertas automáticos de emergência.",t:["C/C++","React Native","Node.js","WebSockets","Firebase · SQLite"],status:"1.º lugar · ANGOTIC e FETIC Bié",u:"https://pti.ao/viva-vence-premio-de-melhor-startup-do-angotic-2026-com-solucao-para-saude-materna/",l:"Notícia"}];
+const contactos=[
+["EMAIL","alcedodev05@gmail.com","mailto:alcedodev05@gmail.com"],
+["WHATSAPP","+244 921 703 737","https://wa.me/244921703737"],
+["LINKEDIN","in/alcedo-dev-28574035b","https://www.linkedin.com/in/alcedo-dev-28574035b"],
+["GITHUB","github.com/alcedode","https://github.com/alcedode"],
+["X","@AlcedoDev62117","https://x.com/AlcedoDev62117"]];
 
-    <script>
-        // Efeito de Revelação ao Rolar (Scroll Reveal)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.querySelectorAll("[data-sum]").forEach(e=>e.textContent=SUM);
 
-        window.addEventListener("scroll", reveal);
+const rows=(a,s)=>a.map(e=>`<article class="row rv"><p class="per${s?" s":""}">${esc(e.p)}</p><div><h4>${esc(e.t)}</h4>${e.i?`<p class="inst">${esc(e.i)}</p>`:""}</div>${e.h?`<div class="det"><ul>${e.h.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}</article>`).join("");
+$("#exp-list").innerHTML=rows(premios);
+$("#api-list").innerHTML=rows(apis,1);
+$("#eng-list").innerHTML=rows(principios,1);
+$("#edu-list").innerHTML=rows(formacao);
+$("#tech-list").innerHTML=tecnologias.map(([c,l])=>`<div><h4>${c}</h4><ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
 
-        // Efeito de Digitação sutil no Console
-        console.log("%c Alcedo Madruga - Portfolio Loaded", "color: #00f2ff; font-weight: bold; font-size: 15px;");
-    </script>
+$("#pcount").textContent=String(projectos.length).padStart(2,"0")+" projectos";
+$("#plist").innerHTML=projectos.map((p,i)=>`<div class="pw rv"><article class="proj" style="z-index:${i+1}"><p class="pn"><span>${p.n}</span><span class="y">${esc(p.y)}</span></p><div class="pb"><a class="pt" href="${p.u}" target="_blank" rel="noopener noreferrer" aria-label="Abrir ${esc(p.name)} numa nova aba"><h4>${esc(p.name)}</h4></a>${p.status?`<p class="st">${esc(p.status)}</p>`:""}<p class="pd">${esc(p.d)}</p><p class="pk">${p.t.join(" / ")}</p></div><div class="pr"><p class="y">${esc(p.y)}</p><a class="gh" href="${p.u}" target="_blank" rel="noopener noreferrer" aria-label="${p.l} do projecto ${esc(p.name)}, abre numa nova aba">${p.l}<i aria-hidden="true">↗</i></a></div></article></div>`).join("");
+$("#ct-list").innerHTML=contactos.map(([k,v,u])=>`<div class="ct rv"><small>${k}</small><a href="${u}"${u.startsWith("http")?' target="_blank" rel="noreferrer"':""}>${v}</a></div>`).join("");
+
+/* tema */
+const root=document.documentElement,tb=$("#theme");
+root.dataset.theme="dark";
+tb.onclick=()=>{const l=root.dataset.theme!=="light";root.dataset.theme=l?"light":"dark";tb.setAttribute("aria-checked",l);tb.setAttribute("aria-label","Ativar tema "+(l?"escuro":"claro"))};
+
+/* aparecer ao rolar */
+const els=[...document.querySelectorAll(".rv")];
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".cover .rv").forEach((e,i)=>e.style.transitionDelay=(i%3)*.12+"s");
+  document.querySelectorAll(".tech div").forEach((e,i)=>e.style.transitionDelay="0s");
+  els.forEach(e=>io.observe(e));
+}else els.forEach(e=>e.classList.add("in"));
+
+/* navegação activa */
+const links=[...document.querySelectorAll("nav a")];
+let tick=false;
+function spy(){
+  const L=innerHeight*.36,top=id=>document.getElementById(id).getBoundingClientRect().top;
+  const end=innerHeight+scrollY>=document.documentElement.scrollHeight-4;
+  const cur=end||top("contacto")<=L?"contacto":top("projectos")<=L?"projectos":top("sobre")<=L?"sobre":"home";
+  links.forEach(a=>{const on=a.dataset.s===cur;a.classList.toggle("on",on);on?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+  tick=false;
+}
+addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(spy)}},{passive:true});
+addEventListener("resize",spy);spy();
+
+/* efeito cromático no título (intensidade segue a velocidade do mouse) */
+let lx=null;
+document.querySelectorAll(".big").forEach(h=>{
+  h.addEventListener("pointermove",e=>{
+    const d=lx===null?0:Math.abs(e.clientX-lx);lx=e.clientX;
+    h.style.setProperty("--f",Math.min(16,9+d*.65)+"px");
+  });
+  h.addEventListener("pointerleave",()=>lx=null);
+});
+
+/* cursor suave */
+if(matchMedia("(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)").matches){
+  const dot=$("#dot");let t={x:0,y:0},c={x:0,y:0},on=false,raf=null;
+  const step=()=>{c.x+=(t.x-c.x)*.14;c.y+=(t.y-c.y)*.14;dot.style.transform=`translate3d(${c.x-5}px,${c.y-5}px,0)`;raf=Math.hypot(t.x-c.x,t.y-c.y)>.05?requestAnimationFrame(step):null};
+  addEventListener("pointermove",e=>{
+    if(e.pointerType==="touch")return;
+    t.x=e.clientX;t.y=e.clientY;
+    if(!on){c.x=t.x;c.y=t.y;on=true}
+    dot.style.opacity=".78";
+    if(raf===null)raf=requestAnimationFrame(step);
+  },{passive:true});
+  const hide=()=>{dot.style.opacity="0";on=false};
+  addEventListener("blur",hide);document.documentElement.addEventListener("pointerleave",hide);
+}
+</script>
 </body>
 </html>
