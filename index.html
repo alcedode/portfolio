@@ -1,308 +1,511 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Alcedo Madruga – Senior Laravel, React JS & Vue.js Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0c11">
+<title>Alcedo Madruga · Portfolio</title>
 <style>
-:root{--bg:#fff;--bg2:#fafafa;--fg:#171717;--mut:#525252;--line:#e5e5e5;--acc:#f53003;--accd:#d42800;--card:#fff;--code:#fafafa;--k:#c2185b;--s:#0a7f4f;--f:#1e66f5;--c:#8a8a8a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111214;--bg2:#17181b;--fg:#f5f5f5;--mut:#a3a3a3;--line:#2c2d31;--acc:#ff5a3a;--accd:#ff7a5f;--card:#17181b;--code:#0d0e10;--k:#ff7ab2;--s:#6fdc9b;--f:#7aa8ff;--c:#777;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#111214;--bg2:#17181b;--fg:#f5f5f5;--mut:#a3a3a3;--line:#2c2d31;--acc:#ff5a3a;--accd:#ff7a5f;--card:#17181b;--code:#0d0e10;--k:#ff7ab2;--s:#6fdc9b;--f:#7aa8ff;--c:#777;color-scheme:dark}
-html{scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}p{margin:0}
-.wrap{max-width:1180px;margin:0 auto;position:relative}
-.sec{position:relative;border-top:1px solid var(--line)}
-.sec>.wrap{padding:88px 24px;border-left:1px dashed var(--line);border-right:1px dashed var(--line)}
-@media(max-width:1230px){.sec>.wrap{border:0}.sq{display:none}}
-.sq{position:absolute;top:-4px;width:7px;height:7px;background:var(--acc)}.sq.l{left:-4px}.sq.r{right:-4px}
-.bdg{font:500 13px "JetBrains Mono",monospace;color:var(--acc);text-transform:uppercase;display:inline-block;margin-bottom:20px}
-h1,h2,h3{font-weight:500;letter-spacing:-.045em;line-height:1.02;margin:0}
-h2{font-size:clamp(34px,5.4vw,60px);max-width:780px}
-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-#bar{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--acc)}
-nav .in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;padding:0 24px;max-width:1180px;margin:0 auto}
-.logo{font:500 17px "JetBrains Mono",monospace;letter-spacing:-.03em;display:flex;align-items:center;gap:8px;flex-shrink:0}
-.logo i{width:10px;height:10px;background:var(--acc)}
-.links{display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
-.links a{padding:7px 12px;border-radius:8px;font-size:15px;color:var(--mut);transition:color .15s,background .15s;white-space:nowrap}
-.links a:hover,.links a.on{color:var(--fg);background:color-mix(in srgb,var(--acc) 9%,transparent)}.links a.on{box-shadow:inset 0 -2px var(--acc)}
-.tools{display:flex;gap:6px;flex-shrink:0}
-.tg,.lg button{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:8px;height:34px;min-width:34px;padding:0 9px;cursor:pointer;font:500 12px "JetBrains Mono",monospace}
-.lg{display:flex}.lg button{border-radius:0;margin-left:-1px}.lg button:first-child{border-radius:8px 0 0 8px;margin:0}.lg button:last-child{border-radius:0 8px 8px 0}
-.lg button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff;position:relative}
-@media(max-width:760px){.links{display:none}}
-.hero{overflow:hidden;border-top:0}
-.grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(70% 90% at 50% 100%,#000 20%,transparent);mask-image:radial-gradient(70% 90% at 50% 100%,#000 20%,transparent)}
-.glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(45% 60% at 75% 75%,color-mix(in srgb,var(--acc) 20%,transparent),transparent)}
-.noise{position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='3' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero .wrap{padding-top:96px;padding-bottom:96px;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-@media(max-width:960px){.hero .wrap{grid-template-columns:1fr;padding-top:56px}}
-.hero h1{font-size:clamp(46px,8vw,92px);animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-@keyframes rise{from{opacity:0;filter:blur(8px);transform:translateY(14px)}to{opacity:1;filter:none;transform:none}}
-.role{margin-top:14px;font:500 14px "JetBrains Mono",monospace}
-.sub{margin-top:18px;font-size:20px;color:var(--mut);max-width:540px}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-flex;align-items:center;height:46px;padding:0 20px;border-radius:9px;border:1px solid var(--line);background:var(--card);font-weight:500;transition:background .15s,transform .15s}
-.btn:hover{background:var(--bg2);transform:translateY(-1px)}.btn.p{background:var(--acc);border-color:transparent;color:#fff}.btn.p:hover{background:var(--accd)}
-.facts{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:8px;color:var(--mut);font-size:15px}
-.facts li:before{content:"✓";color:var(--acc);margin-right:10px}
-.ed{background:var(--code);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px -30px rgba(0,0,0,.35);min-width:0}
-.tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--line);overflow-x:auto}
-.tab{border:0;border-right:1px solid var(--line);background:transparent;color:var(--mut);padding:11px 16px;font:500 13px "JetBrains Mono",monospace;cursor:pointer;white-space:nowrap;display:flex;gap:8px;align-items:center}
-.tab[aria-selected=true]{background:var(--code);color:var(--fg);box-shadow:inset 0 -2px var(--acc)}
-.tab:before{content:"";width:8px;height:8px;background:var(--acc);border-radius:2px}
-pre{margin:0;padding:20px;overflow-x:auto;font:400 13.5px/1.7 "JetBrains Mono",monospace;min-height:218px}pre[hidden]{display:none}
-.k{color:var(--k)}.s{color:var(--s)}.f{color:var(--f)}.c{color:var(--c)}
-.run{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding:11px 20px;font:400 13px "JetBrains Mono",monospace;color:var(--mut);background:var(--bg2)}
-.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pl 2s infinite}
-@keyframes pl{0%{box-shadow:0 0 0 0 #22c55e88}70%,100%{box-shadow:0 0 0 8px #22c55e00}}
-.mq{border-top:1px solid var(--line);overflow:hidden;display:flex;position:relative}
-.mq:before,.mq:after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
-.mq:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}.mq:after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-.mq ul{display:flex;margin:0;padding:0;list-style:none;animation:mq 40s linear infinite;flex-shrink:0}.mq:hover ul{animation-play-state:paused}
-.mq li{padding:26px 36px;border-right:1px solid var(--line);font:500 15px "JetBrains Mono",monospace;color:var(--mut);white-space:nowrap}
-@keyframes mq{to{transform:translateX(-100%)}}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px}
-@media(max-width:860px){.cols{grid-template-columns:1fr;gap:32px}}
-.cols p{color:var(--mut)}.cols p+p{margin-top:16px}
-.feat{display:grid;gap:12px}
-.fc{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:20px;transition:border-color .2s}.fc:hover{border-color:var(--acc)}
-.fc h3{font-size:19px;letter-spacing:-.02em;margin-bottom:6px;display:flex;gap:10px;align-items:center}
-.fc h3:before{content:"";width:8px;height:8px;background:var(--acc)}.fc p{font-size:15px}
-.edu{margin-top:32px;border-left:2px solid var(--acc);padding-left:16px}.edu span{display:block;color:var(--mut);font-size:15px}
-.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:40px}
-.sg>div{background:var(--card);padding:24px}
-.sg h3{font:500 13px "JetBrains Mono",monospace;color:var(--acc);letter-spacing:0;margin-bottom:14px}
-.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:14px;background:var(--bg)}
-.sg .study{grid-column:1/-1}
-.pl{margin-top:40px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.pr{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;padding:32px;background:var(--card);border-bottom:1px solid var(--line);transition:background .2s}
-.pr:last-child{border:0}.pr:hover{background:var(--bg2)}
-@media(max-width:860px){.pr{grid-template-columns:1fr;padding:24px}}
-.pr h3{font-size:30px;margin-bottom:4px}.t{color:var(--acc);font:500 13px "JetBrains Mono",monospace;margin-bottom:14px}.pr p{color:var(--mut)}
-.stk{align-self:start;font:400 13px/1.9 "JetBrains Mono",monospace;background:var(--code);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
-.stk em{font-style:normal;color:var(--mut)}
-.lk{display:inline-block;margin-top:18px;font-weight:500;border-bottom:1px solid var(--acc)}.lk:hover{color:var(--acc)}
-.ct{display:grid;margin-top:36px;border:1px solid var(--line);border-radius:14px;overflow:hidden;max-width:760px}
-.ct a{display:flex;justify-content:space-between;gap:16px;padding:20px 24px;background:var(--card);border-bottom:1px solid var(--line);flex-wrap:wrap;transition:background .15s,color .15s}
-.ct a:last-child{border:0}.ct a:hover{background:var(--bg2);color:var(--acc)}.ct span{color:var(--mut);font:400 14px "JetBrains Mono",monospace}
-footer{border-top:1px solid var(--line);padding:28px 24px;text-align:center;color:var(--mut);font-size:14px}
-button.btn{font:inherit;font-weight:500;color:inherit;cursor:pointer}
-.chip{transition:transform .2s,border-color .2s}.chip:hover{transform:translateY(-2px);border-color:var(--acc)}
-.ed{animation:fl 7s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-6px)}}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);max-width:1180px;margin:0 auto}
-.stats>div{padding:36px 24px;border-right:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
-.stats>div:last-child{border:0}.stats.on>div{opacity:1;transform:none}
-.stats b{display:block;font:500 clamp(44px,7vw,76px)/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:-.05em}.stats b i{font-style:normal;color:var(--acc)}
-.stats span[data-i]{display:block;margin-top:8px;color:var(--mut);font-size:15px}
-@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.stats>div:nth-child(2){border-right:0}.stats>div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-.xp{margin-top:40px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.xr{display:grid;grid-template-columns:280px 1fr;gap:28px;padding:30px 32px;background:var(--card);border-bottom:1px solid var(--line);position:relative}
-.xr:last-child{border:0}.xr:before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acc);transition:width .2s}.xr:hover:before{width:3px}
-.xr h3{font-size:28px}.xr .t{margin:8px 0 0}.xr ul{margin:0;padding-left:18px;color:var(--mut)}.xr li+li{margin-top:6px}
-@media(max-width:860px){.xr{grid-template-columns:1fr;padding:24px;gap:14px}}
-@media print{nav,.mq,.grid,.glow,.noise,.ed,.cta,.sq{display:none!important}.hero .wrap{grid-template-columns:1fr;padding:24px}.sec>.wrap{padding:24px}.stats>div{opacity:1!important;transform:none!important}body{font-size:14px}@page{margin:12mm}}
-@media(prefers-reduced-motion:reduce){.stats>div{opacity:1;transform:none;transition:none}}
-.duo{display:flex;align-items:center;gap:10px;margin-bottom:22px;flex-wrap:wrap}
-.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px 6px 10px;font:500 14px "JetBrains Mono",monospace}
-.pill.lv i{width:10px;height:10px;background:var(--acc);border-radius:2px}
-.pill.rc{color:var(--rc);border-color:color-mix(in srgb,var(--rc) 45%,var(--line))}
-.pill.vu{color:var(--vc);border-color:color-mix(in srgb,var(--vc) 45%,var(--line))}
-.atom{width:20px;height:20px;animation:spin 12s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.hero .glow{background:radial-gradient(45% 60% at 75% 75%,color-mix(in srgb,var(--acc) 20%,transparent),transparent),radial-gradient(40% 50% at 15% 15%,color-mix(in srgb,var(--rc) 14%,transparent),transparent)}
-.tab[data-t="1"]:before,.tab[data-t="3"]:before{background:var(--rc)}
-.sg>div:nth-child(2) h3{color:var(--rc)}.sg>div:nth-child(3) h3{color:var(--vc)}
-.sg>div:nth-child(2) .chip:hover{border-color:var(--rc)}.sg>div:nth-child(3) .chip:hover{border-color:var(--vc)}
-:root{--rc:#0b8fb0;--vc:#2f9e6f}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--rc:#61dafb;--vc:#42d392}}
-:root[data-theme="dark"]{--rc:#61dafb;--vc:#42d392}
-dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--fg);padding:0;width:min(420px,calc(100% - 32px));box-shadow:0 30px 80px -20px rgba(0,0,0,.45)}
-dialog::backdrop{background:rgba(0,0,0,.45);backdrop-filter:blur(3px)}dialog[open]{animation:rise .25s ease both}
-.cvi{padding:26px 24px 24px;position:relative}.cvi h3{font-size:26px}.cvi p{color:var(--mut);margin-top:6px;font-size:15px}
-.cvo{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);transition:border-color .15s,transform .15s}
-.cvo:first-of-type{margin-top:18px}.cvo:hover,.cvo.rec{border-color:var(--acc)}.cvo:hover{transform:translateY(-1px)}
-.cvo b{font-weight:500;font-size:18px}.cvo span{color:var(--mut);font:400 13px "JetBrains Mono",monospace}
-.cvx{position:absolute;top:12px;right:14px;border:0;background:transparent;color:var(--mut);font-size:24px;line-height:1;cursor:pointer;width:32px;height:32px;border-radius:8px}.cvx:hover{background:var(--bg2);color:var(--fg)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+html,body{margin:0;height:100%;overflow:hidden;background:#0a0c11}
+
+.w11{--tb:48px;--ease:cubic-bezier(.2,.8,.2,1);--bg:#0a0c11;--win:#12151c;--panel:rgba(20,23,31,.78);--p2:rgba(255,255,255,.055);--p3:rgba(255,255,255,.1);--line:rgba(255,255,255,.09);--txt:#eef1f6;--mut:#9aa4b5;--red:#ff2d20;--cy:#61dafb;
+position:fixed;inset:0;overflow:hidden;background:var(--bg);color:var(--txt);font-family:"Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif;user-select:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;touch-action:manipulation}
+.w11.light{--bg:#e9edf3;--win:#fff;--panel:rgba(255,255,255,.78);--p2:rgba(0,0,0,.045);--p3:rgba(0,0,0,.08);--line:rgba(0,0,0,.09);--txt:#12151c;--mut:#5a6578;--cy:#0a9bc4}
+.w11 *{box-sizing:border-box}.w11 button{font:inherit;color:inherit;cursor:pointer;-webkit-appearance:none}
+.w11 :focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+.w11 .win,.w11 .menu,.w11 .card,.w11 .tbar,.w11 .tb{transition:background-color .35s,border-color .35s,color .35s}
+.wall{position:absolute;inset:0;overflow:hidden;background:linear-gradient(160deg,#0a0c11,#10131b 60%,#0a0c11);transition:background .5s}
+.light .wall{background:linear-gradient(160deg,#f4f6fa,#e1e7f0)}
+.wall i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.8;animation:drift 20s ease-in-out infinite alternate}
+.wall .a{width:62vmax;height:62vmax;left:-22vmax;bottom:-30vmax;background:radial-gradient(circle,#ff2d20,#8c0f1a 55%,transparent 70%)}
+.wall .b{width:56vmax;height:56vmax;right:-22vmax;top:-26vmax;background:radial-gradient(circle,#61dafb,#1b6f93 55%,transparent 70%);animation-delay:-7s}
+.wall .c{width:34vmax;height:34vmax;right:8vmax;bottom:-18vmax;background:radial-gradient(circle,#ff2d20,transparent 68%);opacity:.35;animation-delay:-12s}
+.light .wall i{opacity:.4}.wall.d{background:linear-gradient(160deg,#0a0c11,#10131b 60%,#0a0c11)}.light .wall.d i{opacity:.8}
+@keyframes drift{to{transform:translate(4vmax,-3vmax) scale(1.1)}}
+@keyframes fi{from{opacity:0}}@keyframes sp{to{transform:rotate(360deg)}}
+@keyframes lockin{from{opacity:0;transform:translateY(-24px) scale(1.02)}}
+@keyframes deskin{from{opacity:0;transform:scale(1.06)}}
+@keyframes icin{from{opacity:0;transform:translateY(14px) scale(.9)}}
+@keyframes winin{from{opacity:0;transform:translateY(18px) scale(.95)}}
+@keyframes winm{from{transform:translateY(100%)}}
+@keyframes toastin{from{opacity:0;transform:translateX(40px)}}
+@keyframes toastm{from{opacity:0;transform:translateY(-30px)}}
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.pill{position:absolute;top:calc(14px + env(safe-area-inset-top));right:16px;z-index:5;display:flex;gap:8px;align-items:center}
+.pill button,.ghost{display:flex;gap:8px;align-items:center;background:rgba(16,18,24,.5);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:99px;padding:8px 14px;font-size:13px;font-weight:600;backdrop-filter:blur(12px);transition:background .2s,transform .15s}
+.pill button:hover{background:rgba(255,255,255,.16)}.pill button:active{transform:scale(.96)}
+.lock{position:absolute;inset:0;z-index:30;color:#fff;text-align:center;cursor:pointer;animation:lockin .7s var(--ease);transition:transform .75s var(--ease),opacity .75s,filter .75s}
+.lock.up{transform:translateY(-100%);opacity:0;filter:blur(10px);pointer-events:none}
+.lock>*:not(.wall):not(.pill){position:absolute;left:0;right:0}
+.clk{top:17%}.clk b{display:block;font-size:clamp(84px,15vw,160px);font-weight:600;line-height:1;letter-spacing:-.03em;text-shadow:0 6px 40px rgba(0,0,0,.45)}
+.clk span{font-size:clamp(16px,2.2vw,22px);font-weight:600;opacity:.95}
+.hint{bottom:calc(30px + env(safe-area-inset-bottom));font-size:13px;opacity:.92}.hint .mono{margin:0 auto 10px;animation:bob 2.4s ease-in-out infinite}
+.mono{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;font-weight:700;font-size:16px;color:#fff;background:linear-gradient(135deg,#ff2d20,#61dafb);box-shadow:0 8px 24px rgba(255,45,32,.35)}
+.login{position:absolute;inset:0;z-index:25;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;text-align:center;animation:fi .6s;transition:opacity .55s,transform .55s var(--ease),filter .55s}
+.login::after{content:"";position:absolute;inset:0;background:rgba(8,9,13,.45);backdrop-filter:blur(30px)}
+.login>*{position:relative;z-index:1}.login>.wall{position:absolute;z-index:0}.login>.pill{position:absolute;z-index:2}
+.login.out{opacity:0;transform:scale(1.05);filter:blur(8px);pointer-events:none}
+.av{width:116px;height:116px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,#ff2d20,#61dafb,#ff2d20);margin-bottom:18px;box-shadow:0 12px 50px rgba(255,45,32,.3);animation:up .7s var(--ease) .15s both}
+.av b{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#14171f;font-size:38px;font-weight:600}
+.login h1{margin:0 0 4px;font-size:28px;font-weight:600;animation:up .7s var(--ease) .25s both}.login p{margin:0 0 26px;color:#d6dbe5;font-size:14px;animation:up .7s var(--ease) .32s both}
+.go{display:flex;gap:10px;align-items:center;justify-content:center;min-width:min(260px,80vw);height:46px;border:0;border-radius:8px;background:var(--red);color:#fff;font-weight:600;font-size:15px;box-shadow:0 8px 24px rgba(255,45,32,.35);transition:background .2s,transform .15s,box-shadow .2s;animation:up .7s var(--ease) .4s both}
+.go:hover{background:#ff4a3d;box-shadow:0 10px 30px rgba(255,45,32,.5)}.go:active{transform:scale(.97)}.go:disabled{cursor:progress}
+.login small{margin-top:16px;font-size:12px;color:#b9c1cf;animation:up .7s var(--ease) .48s both}
+.spin{width:18px;height:18px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+.shell{position:absolute;inset:0;z-index:1;animation:deskin .9s var(--ease)}
+.desk{position:absolute;inset:0 0 var(--tb) 0;padding:12px;display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:6px}
+.ic{width:96px;padding:10px 4px 8px;border-radius:8px;border:1px solid transparent;background:none;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12px;color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.85);animation:icin .6s var(--ease) both;animation-delay:calc(var(--i)*70ms + 450ms);transition:background .15s,border-color .15s,transform .15s}
+.light .ic{color:#12151c;text-shadow:0 1px 3px rgba(255,255,255,.8)}
+.ic:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.16)}.ic.sel{background:rgba(97,218,251,.2);border-color:rgba(97,218,251,.45)}.ic:active{transform:scale(.95)}
+.tile{display:grid;place-items:center;color:#fff;border-radius:23%;box-shadow:0 6px 16px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+.win{position:absolute;background:var(--win);border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;transform-origin:50% 100%;
+animation:winin .3s var(--ease);transition:left .3s var(--ease),top .3s var(--ease),width .3s var(--ease),height .3s var(--ease),border-radius .3s,transform .3s var(--ease),opacity .22s,visibility 0s}
+.win.dg{transition:transform .3s var(--ease),opacity .22s}.win.max{border-radius:0;border-width:0}
+.win.min{opacity:0;transform:translateY(40vh) scale(.55);visibility:hidden;pointer-events:none;transition:transform .3s var(--ease),opacity .25s,visibility 0s .3s}
+.win.closing{opacity:0;transform:scale(.93);pointer-events:none;transition:transform .22s,opacity .2s}
+.tb{height:40px;flex:none;display:flex;align-items:center;gap:9px;padding-left:12px;background:var(--p2);font-size:13px;touch-action:none;transition:opacity .25s}
+.win:not(.top) .tb{opacity:.6}.tb .t{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500}
+.tb button{width:46px;height:40px;border:0;background:none;display:grid;place-items:center;transition:background .15s}.tb button:hover{background:var(--p3)}.tb .x:hover{background:#e5251a;color:#fff}.tb .bk{display:none}
+.body{flex:1;overflow:auto;user-select:text;font-size:14px;line-height:1.55;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.body::-webkit-scrollbar{width:10px}.body::-webkit-scrollbar-thumb{background:var(--p3);border-radius:9px;border:3px solid transparent;background-clip:content-box}
+.pad{padding:22px 26px 28px;animation:up .4s var(--ease)}.fade{animation:up .35s var(--ease)}
+.body h2{margin:0 0 2px;font-size:24px;font-weight:600;letter-spacing:-.01em}.body h3{margin:0 0 6px;font-size:15px;font-weight:600}.mut{color:var(--mut)}
+.card{background:var(--p2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;transition:transform .2s var(--ease),background .2s}
+a.card:hover{transform:translateY(-2px);background:var(--p3)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{--c:var(--txt);background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 28%,transparent);border-radius:6px;padding:2px 10px;font-size:12px}
+.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:38px;background:var(--red);color:#fff!important;border:0;border-radius:8px;padding:8px 16px;font-weight:600;font-size:13px;text-decoration:none;transition:background .2s,transform .15s}
+.btn:hover{background:#ff4a3d}.btn:active{transform:scale(.97)}.btn.alt{background:var(--p2);color:var(--txt)!important;border:1px solid var(--line)}.btn.alt:hover{background:var(--p3)}.btn:disabled{opacity:.4;cursor:default}
+.hero{height:92px;border-radius:12px;background:linear-gradient(120deg,#ff2d20,#ff7a45 38%,#61dafb);position:relative;margin-bottom:46px}
+.hero .av{position:absolute;left:18px;bottom:-44px;width:88px;height:88px;margin:0;animation:none;box-shadow:0 0 0 4px var(--win)}.hero .av b{font-size:30px;background:var(--win)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.stats div{background:var(--p2);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.stats b{display:block;font-size:22px;font-weight:600;background:linear-gradient(120deg,#ff2d20,#61dafb);-webkit-background-clip:text;background-clip:text;color:transparent}.stats span{font-size:11px;color:var(--mut)}
+.row{display:flex;gap:12px;align-items:flex-start}.row>svg{flex:none;margin-top:2px;color:var(--cy)}
+.exp{display:flex;height:100%}.side{width:176px;flex:none;border-right:1px solid var(--line);padding:10px 8px;font-size:13px}
+.side button{display:flex;gap:9px;align-items:center;width:100%;padding:8px 10px;margin-bottom:2px;border:0;border-radius:6px;background:none;text-align:left;color:var(--mut);position:relative;transition:background .15s,color .15s}
+.side button:hover{background:var(--p2)}.side .on{background:var(--p3);color:var(--txt)}.side .on:before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--cy)}
+.addr{display:flex;gap:8px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font-size:13px;flex:none}.addr div{flex:1;background:var(--p2);border-radius:6px;padding:5px 12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.addr .btn{min-height:30px;padding:2px 10px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;padding:14px}
+.pc{display:flex;gap:12px;align-items:center;text-align:left;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--p2);transition:transform .2s var(--ease),background .2s,border-color .2s}
+.pc:hover{transform:translateY(-3px);background:var(--p3);border-color:var(--cy)}.pc:active{transform:scale(.97)}.pc b{display:block;font-size:14px}.pc span.s{font-size:12px;color:var(--mut)}
+.pdf{background:#fff;color:#1b1f27;margin:18px auto;width:calc(100% - 28px);max-width:540px;padding:32px 36px;box-shadow:0 8px 30px rgba(0,0,0,.35);border-radius:3px;animation:up .45s var(--ease)}
+.pdf h2{border-bottom:3px solid #ff2d20;padding-bottom:6px;color:#12151c}.pdf h3{color:#ff2d20;margin:16px 0 4px}.pdf p,.pdf li{font-size:13px;margin:2px 0}.pdf ul{padding-left:18px;margin:0}
+.tbar{position:absolute;left:0;right:0;bottom:0;height:var(--tb);padding-bottom:env(safe-area-inset-bottom);z-index:1900;background:var(--panel);backdrop-filter:blur(30px) saturate(1.4);-webkit-backdrop-filter:blur(30px) saturate(1.4);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.apps{display:flex;gap:3px;max-width:calc(100% - 230px);overflow-x:auto;scrollbar-width:none;padding:0 4px}.apps::-webkit-scrollbar{display:none}
+.tbn{flex:none;width:44px;height:40px;border:0;border-radius:8px;background:none;display:grid;place-items:center;position:relative;transition:background .15s,transform .15s}
+.tbn:hover{background:var(--p2)}.tbn:active{transform:scale(.88)}.tbn.act{background:var(--p2)}
+.tbn.run:after{content:"";position:absolute;bottom:2px;left:50%;width:5px;height:3px;margin-left:-2.5px;border-radius:3px;background:var(--mut);transition:width .25s var(--ease),margin .25s var(--ease),background .25s}
+.tbn.act:after{width:16px;margin-left:-8px;background:var(--cy)}.tbn.tin{animation:icin .35s var(--ease)}
+.tray{position:absolute;right:8px;top:0;bottom:env(safe-area-inset-bottom);display:flex;align-items:center;gap:2px;font-size:12px;line-height:1.25;text-align:right}
+.tray .sys{display:flex;gap:9px;padding:6px 10px;border-radius:6px;color:var(--txt)}.tray .sys:hover{background:var(--p2)}.tray .dt{padding:4px 8px}
+.menu{position:absolute;left:50%;bottom:calc(var(--tb) + 12px);width:min(600px,calc(100% - 16px));max-height:calc(100% - var(--tb) - 28px);overflow:auto;z-index:2000;background:var(--panel);backdrop-filter:blur(40px) saturate(1.5);-webkit-backdrop-filter:blur(40px) saturate(1.5);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.5);
+opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,26px) scale(.97);transition:opacity .22s,transform .32s var(--ease),visibility 0s .32s}
+.menu.open{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);transition-delay:0s}
+.sr{display:flex;gap:10px;align-items:center;margin:18px 20px 0;padding:0 14px;height:42px;border-radius:99px;background:var(--p2);border:1px solid var(--line);color:var(--mut);transition:border-color .2s}.sr:focus-within{border-color:var(--cy)}
+.sr input{flex:1;background:none;border:0;outline:0;color:var(--txt);font:inherit;font-size:14px;user-select:text;min-width:0}
+.menu h4{margin:18px 24px 8px;font-size:13px;font-weight:600}.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:0 14px}
+.mi{display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;border:0;border-radius:10px;background:none;font-size:12px;transition:background .15s,transform .15s}.mi:hover{background:var(--p2)}.mi:active{transform:scale(.95)}
+.ml{display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:0 14px}.ml .mi,.res .mi{flex-direction:row;gap:12px;text-align:left;padding:9px 10px}.res{padding:10px 14px}.res .mi{width:100%}
+.mf{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:12px 20px;background:var(--p2);border-top:1px solid var(--line);font-size:13px}
+.mf .u{display:flex;gap:10px;align-items:center}.mf .mono{width:30px;height:30px;font-size:11px;border-radius:50%}
+.mf button{display:grid;place-items:center;width:34px;height:34px;border:0;border-radius:8px;background:none}.mf button:hover{background:var(--p3)}
+.toast{position:absolute;right:16px;bottom:calc(var(--tb) + 16px);z-index:2100;width:310px;display:flex;gap:12px;align-items:center;padding:13px 14px;background:var(--panel);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 50px rgba(0,0,0,.45);font-size:13px;animation:toastin .55s var(--ease);transition:opacity .4s,transform .4s var(--ease)}
+.toast.out{opacity:0;transform:translateX(40px)}.toast b{display:block;font-size:13.5px}
+.lsw{display:flex;padding:3px;gap:2px;border-radius:99px;background:var(--p2);border:1px solid var(--line)}
+.lsw button{border:0;background:none;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--mut);transition:background .2s,color .2s}
+.lsw button:hover{color:var(--txt)}.lsw button.on{background:var(--cy);color:#06222c}
+.lsw.d{background:rgba(16,18,24,.5);border-color:rgba(255,255,255,.2);backdrop-filter:blur(12px)}
+.lsw.d button{border:0;background:none;padding:5px 10px;font-size:12px;color:#fff;backdrop-filter:none}.lsw.d button:hover{background:rgba(255,255,255,.14)}.lsw.d button.on{background:#61dafb;color:#06222c}
+@media(max-width:420px){.mf .nm{display:none}}
+@media(max-width:700px){
+.w11{--tb:calc(58px + env(safe-area-inset-bottom))}
+.desk{display:grid;grid-template-columns:repeat(4,1fr);align-content:start;gap:14px 4px;padding:calc(20px + env(safe-area-inset-top)) 8px}
+.ic{width:auto;padding:4px 2px;font-size:11.5px}.ic .tile{width:58px!important;height:58px!important}
+.win{left:0!important;top:0!important;width:100%!important;height:calc(100% - var(--tb))!important;border-radius:0;border-width:0;animation:winm .38s var(--ease);transform-origin:50% 100%}
+.win.min,.win.closing{transform:translateY(100%);opacity:1}.win.closing{transition:transform .28s var(--ease)}
+.tb{height:52px;padding-left:4px}.tb .bk{display:grid}.tb>.ico{display:none}.tb .mn,.tb .mx{display:none}.tb .t{font-size:15px;font-weight:600}.tb button{height:52px}
+.side{display:none}.pad{padding:18px 16px 28px}.stats b{font-size:19px}.pgrid{grid-template-columns:1fr}
+.tbn{width:48px;height:46px}.apps{max-width:calc(100% - 118px)}.tray .sys,.tray .dt{display:none}
+.menu{left:8px;right:8px;width:auto;max-height:calc(100% - var(--tb) - 24px);transform:translateY(40px) scale(.98)}.menu.open{transform:none}
+.mg{grid-template-columns:repeat(3,1fr)}.ml{grid-template-columns:1fr}
+.toast{top:calc(10px + env(safe-area-inset-top));bottom:auto;left:10px;right:10px;width:auto;animation:toastm .5s var(--ease)}.toast.out{transform:translateY(-30px)}}
+@media(min-width:701px){.tray .th{display:none}}
+@media(prefers-reduced-motion:reduce){.w11 *,.w11 *:before,.w11 *:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
-<nav><div class="in">
-<a class="logo" href="#home"><i></i>alcedo.dev</a>
-<div class="links"><a href="#about" data-i="n1"></a><a href="#experience" data-i="n5"></a><a href="#stack" data-i="n2"></a><a href="#work" data-i="n3"></a><a href="#contact" data-i="n4"></a></div>
-<div class="tools"><div class="lg" role="group" aria-label="Language"><button data-l="0">EN</button><button data-l="1">PT</button><button data-l="2">FR</button></div><button class="tg" id="tg" aria-label="Theme">◐</button></div>
-</div><div id="bar"></div></nav>
+<div id="app" class="w11"><div class="wall"><i class="a"></i><i class="b"></i><i class="c"></i></div></div>
+<noscript>Ative o JavaScript para ver o portfolio.</noscript>
+<script>
+const GH = "https://github.com/alcedode";
+const D = {
+  nome: "Alcedo Madruga", email: "alcedodev05@gmail.com", wa: "+244 921 703 737", waLink: "https://wa.me/244921703737",
+  linkedin: "https://linkedin.com/in/alcedo-dev-28574035b", di: ["award", "school", "globe"],
+  stack: [
+    ["Laravel", "#ff2d20", ["REST APIs", "Eloquent ORM", "Sanctum / JWT", "Queues & Horizon", "Events & Jobs", "Policies & RBAC", "PHPUnit / Pest", "MySQL / PostgreSQL", "Redis"]],
+    ["React JS", "#61dafb", ["Hooks", "React Router", "TanStack Query", "State management", "Inertia", "Tailwind CSS", "Vite", "Responsive UI"]],
+    ["Vue.js", "#42b883", ["Vue Router", "Pinia", "Inertia", "Tailwind CSS", "Vite"]],
+    ["Docker", "#2496ed", ["Dockerfile", "Docker Compose", "Multi-container", "Nginx", "GitHub Actions", "Dev/prod parity"]],
+    [null, "#a78bfa", "arq"],
+    [null, "#f5a524", ["Java", "Spring Boot"]],
+  ],
+  projetos: [
+    { n: "Bazar Angola", ic: "cart", c: ["#ff2d20", "#ff7a45"], s: ["Laravel API", "React JS", "PostgreSQL + PostGIS", "Redis", "Docker"], l: GH },
+    { n: "AstraSchool", ic: "school", c: ["#61dafb", "#2a8fb0"], s: ["Laravel", "React JS", "MySQL", "Docker"], l: GH },
+    { n: "Sennder POS", ic: "receipt", c: ["#8b7bff", "#5b4bd6"], s: ["Laravel API", "React JS (PWA)", "MySQL", "Docker"], l: GH },
+    { n: "VIVA+", ic: "pulse", c: ["#ff4d6d", "#c9184a"], s: "v", l: null },
+  ],
+};
+const APPS = {
+  sobre: { i: "user", c: ["#ff2d20", "#ff7a45"], w: 740, h: 560 },
+  cv: { i: "file", c: ["#61dafb", "#2a8fb0"], w: 680, h: 580 },
+  projetos: { i: "folder", c: ["#ffc24d", "#f08a24"], w: 840, h: 540 },
+  exp: { i: "brief", c: ["#6b7cff", "#4a3bd6"], w: 620, h: 440 },
+  stack: { i: "layers", c: ["#38bdf8", "#0ea5e9"], w: 760, h: 540 },
+  contactos: { i: "mail", c: ["#ff4d6d", "#c9184a"], w: 560, h: 480 },
+  leiame: { i: "note", c: ["#94a3b8", "#64748b"], w: 500, h: 340 },
+};
+const KEYS = Object.keys(APPS), LANGS = ["pt", "en", "fr"];
+const p2 = (n) => String(n).padStart(2, "0");
 
-<header class="sec hero" id="home"><div class="grid"></div><div class="glow"></div><div class="noise"></div>
-<div class="wrap"><div>
-<div class="duo"><span class="pill lv"><i></i>Laravel</span><span class="pill rc"><svg class="atom" viewBox="-12 -12 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle r="1.8" fill="currentColor" stroke="none"/><ellipse rx="10" ry="4"/><ellipse rx="10" ry="4" transform="rotate(60)"/><ellipse rx="10" ry="4" transform="rotate(120)"/></svg>React JS</span><span class="pill vu"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polygon points="2,3 6.5,3 12,12.5 17.5,3 22,3 12,20.5" fill="currentColor"/></svg>Vue.js</span></div>
-<span class="bdg" data-i="b1"></span>
-<h1>Alcedo Madruga</h1>
-<p class="role" data-i="role"></p>
-<p class="sub" data-i="sub"></p>
-<div class="cta"><a class="btn p" href="mailto:alcedodev05@gmail.com" data-i="c1"></a><a class="btn" href="https://wa.me/244921703737">WhatsApp</a><button class="btn" id="dlb" aria-haspopup="dialog" data-i="dl"></button></div>
-<ul class="facts"><li data-i="f1"></li><li data-i="f2"></li><li data-i="f3"></li></ul>
-</div>
-<div class="ed">
-<div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true" data-t="0">OrderService.php</button><button class="tab" role="tab" aria-selected="false" data-t="1">useOrders.jsx</button><button class="tab" role="tab" aria-selected="false" data-t="2">docker-compose.yml</button><button class="tab" role="tab" aria-selected="false" data-t="3">OrdersTable.jsx</button></div>
-<pre data-p="0"><span class="k">public function</span> <span class="f">place</span>(<span class="k">array</span> $data): Order
-{
-  <span class="k">return</span> DB::<span class="f">transaction</span>(<span class="k">function</span> () <span class="k">use</span> ($data) {
-    $order = Order::<span class="f">create</span>($data);
-    <span class="k">$this</span>->stock-><span class="f">reserve</span>($order);
-    OrderPlaced::<span class="f">dispatch</span>($order); <span class="c">// queue</span>
-    <span class="k">return</span> $order;
-  });
-}</pre>
-<pre data-p="1" hidden><span class="k">export function</span> <span class="f">useOrders</span>() {
-  <span class="k">return</span> <span class="f">useQuery</span>({
-    queryKey: [<span class="s">'orders'</span>],
-    queryFn: () => api.<span class="f">get</span>(<span class="s">'/v1/orders'</span>),
+/* ================= TRADUÇÕES (PT · EN · FR) ================= */
+const TX = {
+  pt: {
+    loc: "pt-PT", cargo: "Engenheiro de software Laravel, React JS & Vue.js", local: "Bié, Angola",
+    sobre: "Engenheiro de software com mais de 2 anos de experiência em Laravel e React JS, também com Vue.js, e Docker em todos os ambientes. Transformo sistemas grandes em serviços pequenos com fronteiras claras, expostos por APIs REST bem desenhadas. Pagamentos e facturação feitos para continuar a funcionar mesmo sem ligação.",
+    stats: [["2+", "anos"], ["4", "projetos"], ["2", "prémios"], ["2", "empresas"]],
+    dest: [["Melhor Start-up, ANGOTIC 2026", "Equipa VIVA+ com a Isabel Sapesse; vencedora também do FETIC Bié."], ["Engenharia Informática, em curso", "Instituto Superior Politécnico Ndunduma. A estudar Java."], ["Remoto · WAT (UTC+1)", "Equipas internacionais, full stack ou back-end, e consultoria de arquitectura."]],
+    exp: [["SUDOMAKE", "Programador Full-Stack", "Funcionalidades front-end e back-end para aplicações web à medida. APIs REST e bases de dados em toda a stack."], ["OCDT", "Programador Backend · Agência", "Serviços backend e APIs para projectos de clientes. Lógica de servidor e bases de dados."]],
+    expH: "Onde o construí", expP: "Mais de 2 anos de código em produção.", stH: "Tecnologias", stP: "Laravel com React e Vue. Mais de 2 anos.",
+    sg: ["Arquitectura", "A estudar"], arq: ["Service layer", "Domain-driven design", "Microservices", "Versionamento de API", "Event-driven", "Transacções atómicas", "Registos de auditoria", "OWASP"],
+    proj: [{ t: "Marketplace multi-lojas", d: "Liga compradores a lojas próximas. Pesquisa por distância, acompanhamento de encomendas em tempo real e painel por loja com permissões por função." }, { t: "Gestão escolar e facturação (SaaS)", d: "Matrículas, notas, boletins e contabilidade. A facturação segue as regras da AGT, com retenção na fonte e hash de documentos, e os dados de cada escola ficam isolados." }, { t: "Ponto de venda offline-first", d: "Caixa que continua a vender e facturar sem internet e sincroniza com a API quando a ligação volta. Licença associada à máquina." }, { t: "Pulseira inteligente para saúde materna", d: "Plataforma que monitoriza sinais vitais e envia alertas de emergência. Vencedora no ANGOTIC 2026 e FETIC Bié." }],
+    viva: ["Pulseira", "App móvel", "Alertas"],
+    apps: { sobre: "Sobre mim", cv: "CV.pdf", projetos: "Projetos", exp: "Experiência", stack: "Tecnologias", contactos: "Contactos", leiame: "LEIA-ME.txt" },
+    hint: "Clique, prima uma tecla ou deslize para cima", light: "Modo Claro", dark: "Modo Escuro", enter: "Entrar", entering: "A entrar…", nopass: "Sem palavra-passe. Entre para ver o portfolio.",
+    wT: "Bem-vindo ao portfolio", wS: "Abra uma pasta para explorar.", search: "Pesquisar projetos, CV, contactos…", pinned: "Fixados", rec: "Recomendado", none: (q) => `Nada encontrado para “${q}”.`,
+    lockBtn: "Bloquear", start: "Iniciar", min: "Minimizar", max: "Maximizar", close: "Fechar", back: "Voltar", all: "Todos", path: "Este PC › Alcedo", gh: "Ver no GitHub", mail: "Enviar e-mail", dl: "Descarregar CV",
+    ctH: "Vamos construir algo duradouro", ctP: "Disponível para equipas internacionais em funções full stack ou back-end e consultoria de arquitectura.",
+    cvH: ["Sobre", "Experiência", "Projetos", "Tecnologias", "Formação", "Prémios"], edu: "Engenharia Informática (em curso), Instituto Superior Politécnico Ndunduma.", awd: "Melhor Start-up, ANGOTIC 2026 · Vencedora do FETIC Bié (VIVA+).",
+    readme: "Bem-vindo ao portfolio de Alcedo Madruga.\n\n· Toque ou duplo clique nos ícones para abrir.\n· Arraste as janelas pela barra de título.\n· Menu Iniciar: pesquise projetos, CV e contactos.\n· Minimize para voltar ao ambiente de trabalho.\n· Sol/Lua muda o tema; PT · EN · FR muda o idioma.\n\nObrigado pela visita.",
+  },
+  en: {
+    loc: "en-GB", cargo: "Software engineer · Laravel, React JS & Vue.js", local: "Bié, Angola",
+    sobre: "Software engineer with 2+ years of experience in Laravel and React JS, plus Vue.js, with Docker in every environment. I split large systems into small services with clear boundaries, exposed through well-designed REST APIs. Payments and invoicing built to keep working even offline.",
+    stats: [["2+", "years"], ["4", "projects"], ["2", "awards"], ["2", "companies"]],
+    dest: [["Best Start-up, ANGOTIC 2026", "VIVA+ team with Isabel Sapesse; also winner of FETIC Bié."], ["Computer Engineering, in progress", "Instituto Superior Politécnico Ndunduma. Currently learning Java."], ["Remote · WAT (UTC+1)", "International teams, full stack or back-end roles, and software architecture consulting."]],
+    exp: [["SUDOMAKE", "Full-Stack Developer", "Front-end and back-end features for custom web applications. REST APIs and databases across the stack."], ["OCDT", "Backend Developer · Agency", "Backend services and APIs for client projects. Server logic and databases."]],
+    expH: "Where I built it", expP: "2+ years of code in production.", stH: "Technologies", stP: "Laravel with React and Vue. 2+ years.",
+    sg: ["Architecture", "Learning"], arq: ["Service layer", "Domain-driven design", "Microservices", "API versioning", "Event-driven", "Atomic transactions", "Audit logs", "OWASP"],
+    proj: [{ t: "Multi-store marketplace", d: "Connects buyers with nearby stores. Distance search, real-time order tracking and a per-store dashboard with role-based permissions." }, { t: "School management and invoicing (SaaS)", d: "Enrolment, grades, report cards and accounting. Invoicing follows AGT rules, with withholding tax and document hashing, and each school’s data is isolated." }, { t: "Offline-first point of sale", d: "A till that keeps selling and invoicing without internet and syncs with the API when the connection returns. Licence tied to the machine." }, { t: "Smart wristband for maternal health", d: "Platform that monitors vital signs and sends emergency alerts. Winner at ANGOTIC 2026 and FETIC Bié." }],
+    viva: ["Wristband", "Mobile app", "Alerts"],
+    apps: { sobre: "About me", cv: "CV.pdf", projetos: "Projects", exp: "Experience", stack: "Technologies", contactos: "Contacts", leiame: "README.txt" },
+    hint: "Click, press a key or swipe up", light: "Light Mode", dark: "Dark Mode", enter: "Enter", entering: "Signing in…", nopass: "No password needed. Enter to view the portfolio.",
+    wT: "Welcome to the portfolio", wS: "Open a folder to explore.", search: "Search projects, CV, contacts…", pinned: "Pinned", rec: "Recommended", none: (q) => `Nothing found for “${q}”.`,
+    lockBtn: "Lock", start: "Start", min: "Minimise", max: "Maximise", close: "Close", back: "Back", all: "All", path: "This PC › Alcedo", gh: "View on GitHub", mail: "Send email", dl: "Download CV",
+    ctH: "Let’s build something that lasts", ctP: "Available for international teams in full stack or back-end roles and software architecture consulting.",
+    cvH: ["About", "Experience", "Projects", "Technologies", "Education", "Awards"], edu: "Computer Engineering (in progress), Instituto Superior Politécnico Ndunduma.", awd: "Best Start-up, ANGOTIC 2026 · FETIC Bié winner (VIVA+).",
+    readme: "Welcome to Alcedo Madruga’s portfolio.\n\n· Tap or double-click icons to open.\n· Drag windows by the title bar.\n· Start menu: search projects, CV and contacts.\n· Minimise to go back to the desktop.\n· Sun/Moon switches theme; PT · EN · FR switches language.\n\nThanks for visiting.",
+  },
+  fr: {
+    loc: "fr-FR", cargo: "Ingénieur logiciel · Laravel, React JS & Vue.js", local: "Bié, Angola",
+    sobre: "Ingénieur logiciel avec plus de 2 ans d’expérience en Laravel et React JS, ainsi qu’en Vue.js, avec Docker dans tous les environnements. Je découpe les grands systèmes en petits services aux frontières claires, exposés via des API REST bien conçues. Paiements et facturation conçus pour continuer à fonctionner même hors connexion.",
+    stats: [["2+", "ans"], ["4", "projets"], ["2", "prix"], ["2", "entreprises"]],
+    dest: [["Meilleure start-up, ANGOTIC 2026", "Équipe VIVA+ avec Isabel Sapesse ; également lauréate du FETIC Bié."], ["Génie informatique, en cours", "Instituto Superior Politécnico Ndunduma. Apprentissage de Java."], ["À distance · WAT (UTC+1)", "Équipes internationales, postes full stack ou back-end, et conseil en architecture logicielle."]],
+    exp: [["SUDOMAKE", "Développeur Full-Stack", "Fonctionnalités front-end et back-end pour des applications web sur mesure. API REST et bases de données sur toute la stack."], ["OCDT", "Développeur Backend · Agence", "Services backend et API pour des projets clients. Logique serveur et bases de données."]],
+    expH: "Là où je l’ai construit", expP: "Plus de 2 ans de code en production.", stH: "Technologies", stP: "Laravel avec React et Vue. Plus de 2 ans.",
+    sg: ["Architecture", "En apprentissage"], arq: ["Service layer", "Domain-driven design", "Microservices", "Versionnage d’API", "Event-driven", "Transactions atomiques", "Journaux d’audit", "OWASP"],
+    proj: [{ t: "Marketplace multi-boutiques", d: "Met en relation acheteurs et boutiques proches. Recherche par distance, suivi des commandes en temps réel et tableau de bord par boutique avec permissions par rôle." }, { t: "Gestion scolaire et facturation (SaaS)", d: "Inscriptions, notes, bulletins et comptabilité. La facturation suit les règles de l’AGT, avec retenue à la source et hachage des documents, et les données de chaque école sont isolées." }, { t: "Point de vente offline-first", d: "Une caisse qui continue de vendre et de facturer sans internet et se synchronise avec l’API au retour de la connexion. Licence liée à la machine." }, { t: "Bracelet connecté pour la santé maternelle", d: "Plateforme qui surveille les signes vitaux et envoie des alertes d’urgence. Lauréate de l’ANGOTIC 2026 et du FETIC Bié." }],
+    viva: ["Bracelet", "Appli mobile", "Alertes"],
+    apps: { sobre: "À propos", cv: "CV.pdf", projetos: "Projets", exp: "Expérience", stack: "Technologies", contactos: "Contacts", leiame: "LISEZMOI.txt" },
+    hint: "Cliquez, appuyez sur une touche ou balayez vers le haut", light: "Mode clair", dark: "Mode sombre", enter: "Entrer", entering: "Connexion…", nopass: "Pas de mot de passe. Entrez pour voir le portfolio.",
+    wT: "Bienvenue sur le portfolio", wS: "Ouvrez un dossier pour explorer.", search: "Rechercher projets, CV, contacts…", pinned: "Épinglés", rec: "Recommandé", none: (q) => `Aucun résultat pour « ${q} ».`,
+    lockBtn: "Verrouiller", start: "Démarrer", min: "Réduire", max: "Agrandir", close: "Fermer", back: "Retour", all: "Tous", path: "Ce PC › Alcedo", gh: "Voir sur GitHub", mail: "Envoyer un e-mail", dl: "Télécharger le CV",
+    ctH: "Construisons quelque chose de durable", ctP: "Disponible pour des équipes internationales sur des postes full stack ou back-end et du conseil en architecture logicielle.",
+    cvH: ["Profil", "Expérience", "Projets", "Technologies", "Formation", "Distinctions"], edu: "Génie informatique (en cours), Instituto Superior Politécnico Ndunduma.", awd: "Meilleure start-up, ANGOTIC 2026 · Lauréate du FETIC Bié (VIVA+).",
+    readme: "Bienvenue sur le portfolio d’Alcedo Madruga.\n\n· Touchez ou double-cliquez sur les icônes pour ouvrir.\n· Faites glisser les fenêtres par la barre de titre.\n· Menu Démarrer : cherchez projets, CV et contacts.\n· Réduisez pour revenir au bureau.\n· Soleil/Lune change le thème ; PT · EN · FR change la langue.\n\nMerci de votre visite.",
+  },
+};
+
+const P = {
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+  file: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+  folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  brief: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+  layers: '<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 5 9-5"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  note: '<path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  x: '<path d="M6 6l12 12M18 6 6 18"/>', min: '<path d="M5 12h14"/>', max: '<rect x="5" y="5" width="14" height="14" rx="2"/>',
+  rest: '<rect x="8" y="4" width="12" height="12" rx="2"/><path d="M4 8v10a2 2 0 0 0 2 2h10"/>',
+  back: '<path d="m15 18-6-6 6-6"/>', search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon: '<path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/>', power: '<path d="M12 3v9M6.3 6.3a8 8 0 1 0 11.4 0"/>',
+  wifi: '<path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><path d="M12 19.5h.01"/>',
+  vol: '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9a4 4 0 0 1 0 6"/>', bat: '<rect x="3" y="8" width="16" height="8" rx="2"/><path d="M22 11v2M6 11v2M9 11v2"/>',
+  arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>', dl: '<path d="M12 3v12m0 0-4-4m4 4 4-4M4 20h16"/>',
+  award: '<circle cx="12" cy="9" r="6"/><path d="m9 14-1 8 4-2 4 2-1-8"/>', school: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  cart: '<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/>',
+  receipt: '<path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
+  pulse: '<path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21l8.8-8.3a5 5 0 0 0 0-7.1z"/><path d="M3 12h4l2-3 3 6 2-3h7"/>',
+  gh: '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>',
+  li: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>',
+  chat: '<path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"/>',
+};
+const projs = (tx) => D.projetos.map((x, i) => ({ ...x, ...tx.proj[i], s: x.s === "v" ? tx.viva : x.s }));
+const stackOf = (tx) => D.stack.map((g, i) => [g[0] || tx.sg[i - 4], g[1], g[2] === "arq" ? tx.arq : g[2]]);
+(() => {
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const root = $("#app");
+const ls = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const I = (n, s = 20) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+const Tile = (n, c, s = 48) => `<span class="tile" style="width:${s}px;height:${s}px;background:linear-gradient(145deg,${c[0]},${c[1]})">${I(n, s * 0.52)}</span>`;
+const WINLOGO = (s) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}"><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff2d20"/><stop offset="1" stop-color="#61dafb"/></linearGradient></defs>${[[2, 2], [13, 2], [2, 13], [13, 13]].map(([x, y]) => `<rect x="${x}" y="${y}" width="9" height="9" rx="1.6" fill="url(#wg)"/>`).join("")}</svg>`;
+const ATOM = (s = 18) => `<svg viewBox="-12 -12 24 24" width="${s}" height="${s}" fill="none" stroke="#61dafb" stroke-width="1.3"><circle r="2" fill="#61dafb"/><ellipse rx="10" ry="4"/><ellipse rx="10" ry="4" transform="rotate(60)"/><ellipse rx="10" ry="4" transform="rotate(120)"/></svg>`;
+const WALL = (d) => `<div class="wall${d ? " d" : ""}"><i class="a"></i><i class="b"></i><i class="c"></i></div>`;
+const LSW = (d) => `<div class="lsw${d ? " d" : ""}" role="group" aria-label="Language">${LANGS.map((l) => `<button data-act="lang" data-l="${l}">${l.toUpperCase()}</button>`).join("")}</div>`;
+const PILL = `<div class="pill">${LSW(true)}<button data-act="theme"><span data-theme-ic="16"></span><span data-t="themeLbl"></span></button></div>`;
+
+const st = {
+  lang: (() => { const s = ls.get("lang"); if (TX[s]) return s; const n = (navigator.language || "pt").slice(0, 2); return TX[n] ? n : "pt"; })(),
+  light: (() => { const s = ls.get("theme"); return s ? s === "light" : matchMedia("(prefers-color-scheme: light)").matches; })(),
+  lk: "on", ld: "", entered: false, wins: [], menu: false, q: "", sel: null, z: 10, id: 1, first: true, mode: "",
+};
+const T = () => TX[st.lang];
+const mob = () => matchMedia("(max-width:700px)").matches;
+const tap = () => mob() || matchMedia("(hover:none)").matches;
+const val = (k) => (k === "themeLbl" ? (st.light ? T().dark : T().light) : T()[k]);
+
+/* ---------- pintura de textos / tema / idioma ---------- */
+function tick() {
+  const n = new Date(), t = T(), hh = p2(n.getHours()) + ":" + p2(n.getMinutes());
+  const d = n.toLocaleDateString(t.loc, { weekday: "long", day: "numeric", month: "long" });
+  $$("[data-clock]").forEach((e) => (e.textContent = hh));
+  $$("[data-date]").forEach((e) => (e.textContent = d.charAt(0).toUpperCase() + d.slice(1)));
+  $$("[data-sysdate]").forEach((e) => (e.innerHTML = hh + "<br>" + n.toLocaleDateString(t.loc)));
+}
+function paint() {
+  const t = T();
+  $$("[data-t]").forEach((e) => (e.textContent = val(e.dataset.t)));
+  $$("[data-ap]").forEach((e) => (e.textContent = t.apps[e.dataset.ap]));
+  $$("[data-al]").forEach((e) => e.setAttribute("aria-label", val(e.dataset.al)));
+  $$("[data-ti]").forEach((e) => (e.title = val(e.dataset.ti)));
+  $$("[data-ph]").forEach((e) => (e.placeholder = val(e.dataset.ph)));
+  $$(".lsw button").forEach((b) => { const on = b.dataset.l === st.lang; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+  $$("[data-theme-ic]").forEach((e) => (e.innerHTML = I(st.light ? "moon" : "sun", +e.dataset.themeIc)));
+  $$("[data-langtxt]").forEach((e) => (e.textContent = st.lang.toUpperCase()));
+  root.classList.toggle("light", st.light);
+  tick(); refresh();
+}
+function setLang(l) {
+  st.lang = l; ls.set("lang", l); document.documentElement.lang = l;
+  paint(); renderMenuBody(); st.wins.forEach(renderBody);
+}
+function toggleTheme() { st.light = !st.light; ls.set("theme", st.light ? "light" : "dark"); paint(); }
+
+/* ---------- conteúdo das janelas ---------- */
+const chips = (l, c) => `<div class="chips">${l.map((x) => `<span class="chip"${c ? ` style="--c:${c}"` : ""}>${x}</span>`).join("")}</div>`;
+const AV = `<div class="av"><b>AM</b></div>`;
+const cvTxt = (t) => {
+  const H = t.cvH.map((h) => h.toUpperCase());
+  return `${D.nome}\n${t.cargo} · ${t.local}\n${D.email} · ${D.wa}\n\n${H[0]}\n${t.sobre}\n\n${H[1]}\n${t.exp.map((e) => `${e[0]} — ${e[1]}\n${e[2]}`).join("\n\n")}\n\n${H[2]}\n${projs(t).map((p) => `${p.n} — ${p.t}\n${p.d}`).join("\n\n")}\n\n${H[3]}\n${stackOf(t).map(([k, , v]) => `${k}: ${v.join(", ")}`).join("\n")}\n\n${H[4]}\n${t.edu}\n\n${H[5]}\n${t.awd}\n`;
+};
+const baixar = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([cvTxt(T())], { type: "text/plain;charset=utf-8" })); a.download = "CV-Alcedo-Madruga.txt"; a.click(); };
+
+const V = {
+  sobre() {
+    const t = T();
+    return `<div class="pad"><div class="hero">${AV}</div><h2>${D.nome}</h2><div class="mut" style="display:flex;gap:6px;align-items:center">${ATOM(16)}${t.cargo} · ${t.local}</div>
+<div class="stats">${t.stats.map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("")}</div><p style="margin:0 0 14px">${t.sobre}</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"><a class="btn" href="mailto:${D.email}">${I("mail", 16)}${t.mail}</a><a class="btn alt" href="${D.waLink}" target="_blank" rel="noreferrer">${I("chat", 16)}WhatsApp</a></div>
+${t.dest.map(([a, b], i) => `<div class="card row">${I(D.di[i], 22)}<div><h3>${a}</h3><span class="mut">${b}</span></div></div>`).join("")}</div>`;
+  },
+  exp() {
+    const t = T();
+    return `<div class="pad"><h2>${t.expH}</h2><p class="mut" style="margin:0 0 14px">${t.expP}</p>${t.exp.map(([e, c, d]) => `<div class="card" style="border-left:3px solid var(--red)"><h3>${e}</h3><div class="mut" style="font-size:13px">${c}</div><p style="margin:6px 0 0">${d}</p></div>`).join("")}</div>`;
+  },
+  stack() {
+    const t = T();
+    return `<div class="pad"><h2>${t.stH}</h2><p class="mut" style="margin:0 0 14px">${t.stP}</p>${stackOf(t).map(([k, c, v]) => `<div class="card"><h3 style="display:flex;gap:8px;align-items:center">${k === "React JS" ? ATOM() : `<i style="width:9px;height:9px;border-radius:9px;background:${c}"></i>`}${k}</h3>${chips(v, c)}</div>`).join("")}</div>`;
+  },
+  projetos(w) {
+    const t = T(), L = projs(t), sel = w.sel, p = L[sel];
+    const mode = p ? "d" + sel : "g";
+    const side = `<div class="side"><button class="${sel == null ? "on" : ""}" data-act="psel" data-i="-1">${I("folder", 16)}${t.all}</button>${L.map((x, i) => `<button class="${sel === i ? "on" : ""}" data-act="psel" data-i="${i}">${I(x.ic, 16)}${x.n}</button>`).join("")}</div>`;
+    const addr = `<div class="addr"><button class="btn alt" data-act="psel" data-i="-1" aria-label="${t.back}" ${sel == null ? "disabled" : ""}>${I("back", 16)}</button><div>${t.path} › ${t.apps.projetos}${p ? " › " + p.n : ""}</div></div>`;
+    const main = p
+      ? `<div class="pad"><div style="display:flex;gap:14px;align-items:center;margin-bottom:14px">${Tile(p.ic, p.c, 58)}<div><h2>${p.n}</h2><span class="mut">${p.t}</span></div></div><p>${p.d}</p>${chips(p.s)}${p.l ? `<p style="margin-top:18px"><a class="btn" href="${p.l}" target="_blank" rel="noreferrer">${I("gh", 16)}${t.gh}</a></p>` : ""}</div>`
+      : `<div class="pgrid fade">${L.map((x, i) => `<button class="pc" data-act="psel" data-i="${i}">${Tile(x.ic, x.c, 46)}<div><b>${x.n}</b><span class="s">${x.t}</span></div></button>`).join("")}</div>`;
+    return `<div class="exp">${side}<div style="flex:1;min-width:0;display:flex;flex-direction:column">${addr}<div style="overflow:auto;flex:1">${main}</div></div></div>`;
+  },
+  cv() {
+    const t = T(), H = t.cvH;
+    return `<div><div class="addr"><div>CV.pdf</div><button class="btn" data-act="dl">${I("dl", 16)}${t.dl}</button></div><div class="pdf"><h2>${D.nome}</h2><p>${t.cargo} · ${t.local}</p><p>${D.email} · ${D.wa}</p>
+<h3>${H[0]}</h3><p>${t.sobre}</p><h3>${H[1]}</h3><ul>${t.exp.map((e) => `<li><b>${e[0]}</b> — ${e[1]}</li>`).join("")}</ul>
+<h3>${H[2]}</h3><ul>${projs(t).map((p) => `<li><b>${p.n}</b> — ${p.t}</li>`).join("")}</ul>
+<h3>${H[3]}</h3><p>Laravel, React JS, Vue.js, Docker, REST APIs, Microservices, CI/CD.</p><h3>${H[4]}</h3><p>${t.edu}</p><h3>${H[5]}</h3><p>${t.awd}</p></div></div>`;
+  },
+  contactos() {
+    const t = T();
+    const L = [["mail", "Email", D.email, "mailto:" + D.email], ["chat", "WhatsApp", D.wa, D.waLink], ["li", "LinkedIn", "in/alcedo-dev-28574035b", D.linkedin], ["gh", "GitHub", "github.com/alcedode", GH]];
+    return `<div class="pad"><h2>${t.ctH}</h2><p class="mut" style="margin:0 0 16px">${t.ctP}</p>${L.map(([i, n, v, h]) => `<a href="${h}" target="_blank" rel="noreferrer" class="card" style="display:flex;gap:14px;align-items:center;color:inherit;text-decoration:none">${Tile(i, ["#ff2d20", "#61dafb"], 40)}<div style="min-width:0"><b>${n}</b><div class="mut" style="overflow:hidden;text-overflow:ellipsis">${v}</div></div></a>`).join("")}</div>`;
+  },
+  leiame() { return `<pre style="margin:0;padding:20px;font-family:Consolas,ui-monospace,monospace;font-size:13px;white-space:pre-wrap">${esc(T().readme)}</pre>`; },
+};
+const renderBody = (w) => { $(".body", w.el).innerHTML = V[w.app](w); };
+
+/* ---------- janelas ---------- */
+const topWin = () => st.wins.filter((w) => !w.closing && !w.min).sort((a, b) => b.z - a.z)[0];
+function paintWin(w, top) {
+  const A = APPS[w.app], e = w.el, s = e.style;
+  e.className = `win${w.max ? " max" : ""}${w.min ? " min" : ""}${w.closing ? " closing" : ""}${top ? " top" : ""}${w.dg ? " dg" : ""}`;
+  s.zIndex = w.z;
+  if (w.max) { s.left = "0"; s.top = "0"; s.width = "100%"; s.height = "calc(100% - var(--tb))"; }
+  else { s.left = w.x + "px"; s.top = w.y + "px"; s.width = Math.min(A.w, innerWidth - 16) + "px"; s.height = Math.min(A.h, innerHeight - 100) + "px"; }
+  $(".mx", e).innerHTML = I(w.max ? "rest" : "max", 14);
+}
+function syncTb(top) {
+  const box = $("#tbapps"); if (!box) return;
+  const apps = [...new Set(st.wins.filter((w) => !w.closing).map((w) => w.app))];
+  $$(".tbn.run", box).forEach((b) => { if (!apps.includes(b.dataset.k)) b.remove(); });
+  apps.forEach((a) => {
+    let b = $(`.tbn.run[data-k="${a}"]`, box);
+    if (!b) { b = document.createElement("button"); b.className = "tbn tin run"; b.dataset.act = "tb"; b.dataset.k = a; b.innerHTML = Tile(APPS[a].i, APPS[a].c, 26); box.appendChild(b); }
+    b.title = T().apps[a]; b.classList.toggle("act", !!top && top.app === a);
   });
 }
+function refresh() { const top = topWin(); st.wins.forEach((w) => paintWin(w, top && w.id === top.id)); syncTb(top); }
+function openApp(app, arg) {
+  closeMenu();
+  let w = st.wins.find((x) => x.app === app && !x.closing);
+  if (w) { w.min = false; w.z = ++st.z; if (arg != null) { w.sel = arg; renderBody(w); } refresh(); return; }
+  const n = st.wins.length;
+  w = { id: st.id++, app, z: ++st.z, min: false, max: innerWidth < 700, x: 120 + (n % 6) * 34, y: 36 + (n % 6) * 30, sel: arg ?? null, closing: false, dg: false };
+  const el = document.createElement("div"); w.el = el;
+  el.innerHTML = `<div class="tb"><button class="bk" data-act="close" data-al="back">${I("back", 22)}</button><span class="ico" style="display:grid">${Tile(APPS[app].i, APPS[app].c, 20)}</span><span class="t" data-ap="${app}"></span><button class="mn" data-act="min" data-al="min">${I("min", 16)}</button><button class="mx" data-act="max" data-al="max"></button><button class="x" data-act="close" data-al="close">${I("x", 16)}</button></div><div class="body"></div>`;
+  paintWin(w, true); renderBody(w);
+  const tb = $(".tb", el); let d = null;
+  tb.addEventListener("pointerdown", (e) => { if (mob() || w.max || e.target.closest("button")) return; d = [e.clientX - w.x, e.clientY - w.y]; w.dg = true; el.classList.add("dg"); tb.setPointerCapture(e.pointerId); });
+  tb.addEventListener("pointermove", (e) => { if (!d) return; w.x = Math.max(0, e.clientX - d[0]); w.y = Math.max(0, Math.min(innerHeight - 100, e.clientY - d[1])); el.style.left = w.x + "px"; el.style.top = w.y + "px"; });
+  const up = () => { d = null; w.dg = false; el.classList.remove("dg"); };
+  tb.addEventListener("pointerup", up); tb.addEventListener("pointercancel", up);
+  tb.addEventListener("dblclick", (e) => { if (!mob() && !e.target.closest("button")) { w.max = !w.max; refresh(); } });
+  el.addEventListener("pointerdown", () => { if (st.menu) closeMenu(); const t = topWin(); if (!t || t.id !== w.id) { w.z = ++st.z; refresh(); } });
+  st.wins.push(w); $("#shell").appendChild(el); paint();
+}
+function closeWin(w) { w.closing = true; refresh(); setTimeout(() => { w.el.remove(); st.wins = st.wins.filter((x) => x !== w); refresh(); }, 300); }
 
-<span class="c">// REST contract, typed and cached</span></pre>
-<pre data-p="2" hidden><span class="k">services</span>:
-  api:   { build: ./api, depends_on: [db, redis] }
-  web:   { build: ./web, ports: [<span class="s">"3000:3000"</span>] }
-  queue: { build: ./api, command: php artisan queue:work }
-  db:    { image: postgres:16 }
-  redis: { image: redis:7 }</pre>
-<pre data-p="3" hidden><span class="k">export function</span> <span class="f">OrdersTable</span>() {
-  <span class="k">const</span> { data, isLoading } = <span class="f">useOrders</span>();
-  <span class="k">if</span> (isLoading) <span class="k">return</span> &lt;<span class="f">Skeleton</span> /&gt;;
+/* ---------- menu iniciar ---------- */
+function renderMenuBody() {
+  const m = $("#mbody"); if (!m) return;
+  const t = T(), q = st.q.trim().toLowerCase();
+  const items = [...KEYS.map((k) => ({ t: t.apps[k], k, i: APPS[k].i, c: APPS[k].c })), ...projs(t).map((p, i) => ({ t: p.n, s: p.t, k: "projetos", a: i, i: p.ic, c: p.c }))];
+  const Row = (x) => `<button class="mi" data-act="open" data-k="${x.k}"${x.a != null ? ` data-a="${x.a}"` : ""}>${Tile(x.i, x.c, 36)}<span><b style="font-weight:500">${x.t}</b>${x.s ? `<div class="mut" style="font-size:11px">${x.s}</div>` : ""}</span></button>`;
+  const res = q ? items.filter((x) => (x.t + (x.s || "")).toLowerCase().includes(q)) : null;
+  const mode = res ? "r" : "p" + st.lang, fade = mode !== st.mode ? " fade" : ""; st.mode = mode;
+  if (res) m.innerHTML = `<div class="res${fade}">${res.length ? res.map(Row).join("") : `<p class="mut" style="text-align:center">${esc(t.none(st.q.trim()))}</p>`}</div>`;
+  else {
+    const rec = [items.find((x) => x.k === "cv"), items.find((x) => x.k === "contactos"), items[KEYS.length], items[KEYS.length + 1]];
+    m.innerHTML = `<div class="${fade.trim()}"><h4>${t.pinned}</h4><div class="mg">${KEYS.map((k) => `<button class="mi" data-act="open" data-k="${k}">${Tile(APPS[k].i, APPS[k].c, 42)}${t.apps[k]}</button>`).join("")}</div><h4>${t.rec}</h4><div class="ml">${rec.map(Row).join("")}</div></div>`;
+  }
+}
+function paintMenu() {
+  $("#menu").classList.toggle("open", st.menu); $("#menu").setAttribute("aria-hidden", !st.menu);
+  $("#q").tabIndex = st.menu ? 0 : -1; $("#startbtn").classList.toggle("act", st.menu);
+}
+function closeMenu() {
+  if (!st.menu) return;
+  st.menu = false; paintMenu();
+  setTimeout(() => { if (!st.menu) { st.q = ""; $("#q").value = ""; renderMenuBody(); } }, 300);
+}
 
-  <span class="k">return</span> data.<span class="f">map</span>((o) =&gt;
-    &lt;<span class="f">OrderRow</span> key={o.id} {...o} /&gt;
-  );
-}</pre>
-<div class="run"><i class="dot"></i><span data-i="run"></span></div>
-</div></div></header>
+/* ---------- ecrãs: bloqueio · login · ambiente de trabalho ---------- */
+function mountLock() {
+  $("#lock")?.remove(); $("#login")?.remove();
+  const l = document.createElement("div"); l.id = "lock"; l.className = "lock";
+  l.innerHTML = WALL(true) + PILL + `<div class="clk"><b data-clock></b><span data-date></span></div><div class="hint"><div class="mono">AM</div><span data-t="hint"></span></div>`;
+  l.addEventListener("click", (e) => { if (!e.target.closest(".pill")) unlock(); });
+  root.appendChild(l); st.lk = "on"; paint();
+}
+function mountLogin() {
+  $("#login")?.remove();
+  const l = document.createElement("div"); l.id = "login"; l.className = "login";
+  l.innerHTML = WALL(true) + PILL + `${AV}<h1>${D.nome}</h1><p data-t="cargo"></p><button class="go" id="gobtn" data-act="enter"><span data-t="enter"></span>${I("arrow", 18)}</button><small data-t="nopass"></small>`;
+  root.appendChild(l); st.ld = ""; paint(); $("#gobtn").focus({ preventScroll: true });
+}
+function unlock() {
+  if (st.lk !== "on") return;
+  st.lk = "leaving"; const l = $("#lock"); l.classList.add("up"); mountLogin();
+  setTimeout(() => { l.remove(); st.lk = "off"; }, 760);
+}
+function lock() { closeMenu(); $$(".toast").forEach((x) => x.remove()); mountLock(); }
+function mountShell() {
+  const sh = document.createElement("div"); sh.id = "shell"; sh.className = "shell";
+  sh.innerHTML = `<div class="desk">${KEYS.map((k, i) => `<button class="ic" style="--i:${i}" data-act="icon" data-k="${k}">${Tile(APPS[k].i, APPS[k].c, 48)}<span data-ap="${k}"></span></button>`).join("")}</div>
+<div class="menu" id="menu" aria-hidden="true"><label class="sr">${I("search", 18)}<input id="q" data-ph="search" autocomplete="off" tabindex="-1"></label><div id="mbody"></div>
+<div class="mf"><div class="u"><span class="mono">AM</span><span class="nm">${D.nome}</span></div><div class="u">${LSW(false)}<button data-act="theme" data-al="themeLbl" data-ti="themeLbl"><span data-theme-ic="18"></span></button><button data-act="lock" data-al="lockBtn" data-ti="lockBtn">${I("lock", 18)}</button></div></div></div>
+<div class="tbar"><div class="apps" id="tbapps"><button class="tbn" id="startbtn" data-act="menu" data-al="start" data-ti="start">${WINLOGO(22)}</button></div>
+<div class="tray"><button class="tbn" style="width:38px;font-size:12px;font-weight:700" data-act="cyc" aria-label="Language" title="PT · EN · FR"><span data-langtxt></span></button><button class="tbn" style="width:38px" data-act="theme" data-al="themeLbl" data-ti="themeLbl"><span data-theme-ic="18"></span></button><div class="sys">${I("wifi", 15)}${I("vol", 15)}${I("bat", 15)}</div><div class="dt" data-sysdate></div></div></div>`;
+  root.appendChild(sh); st.entered = true; renderMenuBody(); paint();
+}
+function entrar() {
+  if (st.ld) return;
+  st.ld = "loading"; const b = $("#gobtn"); b.disabled = true; b.innerHTML = `<span class="spin"></span><span data-t="entering"></span>`; paint();
+  setTimeout(() => {
+    st.ld = "out"; const lg = $("#login"); lg.classList.add("out");
+    if (!st.entered) mountShell();
+    setTimeout(() => lg.remove(), 560);
+    if (st.first) { st.first = false; if (!mob()) setTimeout(() => openApp("sobre"), 1000); }
+    setTimeout(() => {
+      if (!$("#shell")) return;
+      const e = document.createElement("div"); e.className = "toast"; e.innerHTML = `<span class="mono">AM</span><div><b data-t="wT"></b><span class="mut" data-t="wS"></span></div>`;
+      $("#shell").appendChild(e); paint();
+      setTimeout(() => e.classList.add("out"), 4700); setTimeout(() => e.remove(), 5200);
+    }, 1300);
+  }, 1200);
+}
+const paintSel = () => $$(".ic").forEach((b) => b.classList.toggle("sel", b.dataset.k === st.sel));
 
-<div class="mq" aria-hidden="true"><ul><li>Laravel</li><li>React JS</li><li>Vue.js</li><li>Docker</li><li>REST APIs</li><li>Microservices</li><li>Service layer</li><li>Queues &amp; events</li><li>CI/CD</li></ul><ul><li>Laravel</li><li>React JS</li><li>Vue.js</li><li>Docker</li><li>REST APIs</li><li>Microservices</li><li>Service layer</li><li>Queues &amp; events</li><li>CI/CD</li></ul></div>
+/* ---------- eventos ---------- */
+const wOf = (el) => st.wins.find((w) => w.el === el.closest(".win"));
+root.addEventListener("click", (e) => {
+  if (!e.target.closest(".menu,.tbar,.win,.ic")) { if (st.menu) closeMenu(); if (st.sel) { st.sel = null; paintSel(); } }
+  const a = e.target.closest("[data-act]"); if (!a) return;
+  const d = a.dataset;
+  switch (d.act) {
+    case "icon": closeMenu(); if (tap()) openApp(d.k); else { st.sel = d.k; paintSel(); } break;
+    case "open": openApp(d.k, d.a != null && d.a !== "" ? +d.a : undefined); break;
+    case "close": closeWin(wOf(a)); break;
+    case "min": { const w = wOf(a); w.min = true; refresh(); break; }
+    case "max": { const w = wOf(a); w.max = !w.max; refresh(); break; }
+    case "psel": { const w = wOf(a); w.sel = +d.i < 0 ? null : +d.i; renderBody(w); break; }
+    case "lang": setLang(d.l); break;
+    case "cyc": setLang(LANGS[(LANGS.indexOf(st.lang) + 1) % LANGS.length]); break;
+    case "theme": toggleTheme(); break;
+    case "lock": lock(); break;
+    case "menu": if (st.menu) closeMenu(); else { st.menu = true; paintMenu(); } break;
+    case "tb": { const w = st.wins.filter((x) => x.app === d.k && !x.closing).sort((x, y) => y.z - x.z)[0], t = topWin(); if (t && t === w) { w.min = true; refresh(); } else openApp(d.k); break; }
+    case "enter": entrar(); break;
+    case "dl": baixar(); break;
+  }
+});
+root.addEventListener("dblclick", (e) => { const i = e.target.closest(".ic"); if (i) openApp(i.dataset.k); });
+root.addEventListener("input", (e) => { if (e.target.id === "q") { st.q = e.target.value; renderMenuBody(); } });
+addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); if (st.lk === "on") unlock(); });
+addEventListener("wheel", (e) => { if (e.deltaY > 0 && st.lk === "on") unlock(); }, { passive: true });
+let ty = 0;
+addEventListener("touchstart", (e) => (ty = e.touches[0].clientY), { passive: true });
+addEventListener("touchend", (e) => { if (st.lk === "on" && ty - e.changedTouches[0].clientY > 40) unlock(); }, { passive: true });
+addEventListener("resize", refresh);
 
-<div class="stats" id="stats"><div><b><span data-c="6">6</span><i>+</i></b><span data-i="s1"></span></div><div><b><span data-c="4">4</span></b><span data-i="s2"></span></div><div><b><span data-c="2">2</span></b><span data-i="s3"></span></div><div><b><span data-c="2">2</span></b><span data-i="s4"></span></div></div>
+document.documentElement.lang = st.lang;
+mountLock(); setInterval(tick, 1000);
+})();
 
-<section class="sec" id="experience"><div class="wrap"><i class="sq l"></i><i class="sq r"></i>
-<span class="bdg" data-i="ex_b"></span><h2 data-i="ex_h"></h2>
-<div class="xp">
-<article class="xr"><div><h3>SUDOMAKE</h3><div class="t" data-i="x1r"></div></div><ul><li data-i="x1a"></li><li data-i="x1b"></li></ul></article>
-<article class="xr"><div><h3>OCDT</h3><div class="t" data-i="x2r"></div></div><ul><li data-i="x2a"></li><li data-i="x2b"></li></ul></article>
-</div></div></section>
-
-<section class="sec" id="about"><div class="wrap"><i class="sq l"></i><i class="sq r"></i>
-<span class="bdg" data-i="ab_b"></span><h2 data-i="ab_h"></h2>
-<div class="cols"><div><p data-i="ab_p1"></p><p data-i="ab_p2"></p>
-<div class="edu"><b data-i="edu_t"></b><span data-i="edu_s"></span></div></div>
-<div class="feat">
-<div class="fc"><h3 data-i="fc1t"></h3><p data-i="fc1p"></p></div>
-<div class="fc"><h3 data-i="fc2t"></h3><p data-i="fc2p"></p></div>
-<div class="fc"><h3 data-i="fc3t"></h3><p data-i="fc3p"></p></div>
-</div></div></div></section>
-
-<section class="sec" id="stack"><div class="wrap"><i class="sq l"></i><i class="sq r"></i>
-<span class="bdg" data-i="st_b"></span><h2 data-i="st_h"></h2>
-<div class="sg">
-<div><h3>Laravel</h3><div class="chips"><span class="chip">REST APIs</span><span class="chip">Eloquent ORM</span><span class="chip">Sanctum / JWT</span><span class="chip">Queues &amp; Horizon</span><span class="chip">Events &amp; Jobs</span><span class="chip">Policies &amp; RBAC</span><span class="chip">PHPUnit / Pest</span><span class="chip">MySQL / PostgreSQL</span><span class="chip">Redis</span></div></div>
-<div><h3>React JS</h3><div class="chips"><span class="chip">Hooks</span><span class="chip">React Router</span><span class="chip">TanStack Query</span><span class="chip">State management</span><span class="chip">Inertia</span><span class="chip">Tailwind CSS</span><span class="chip">Vite</span><span class="chip">Responsive UI</span></div></div>
-<div><h3>Vue.js</h3><div class="chips"><span class="chip">Vue.js</span><span class="chip">Vue Router</span><span class="chip">Pinia</span><span class="chip">Inertia</span><span class="chip">Tailwind CSS</span><span class="chip">Vite</span></div></div>
-<div><h3>Docker</h3><div class="chips"><span class="chip">Dockerfile</span><span class="chip">Docker Compose</span><span class="chip">Multi-container apps</span><span class="chip">Nginx</span><span class="chip">GitHub Actions</span><span class="chip">Dev/prod parity</span></div></div>
-<div><h3 data-i="g4"></h3><div class="chips"><span class="chip">Service layer</span><span class="chip">Domain-driven design</span><span class="chip">Microservices</span><span class="chip">REST &amp; API versioning</span><span class="chip">Event-driven</span><span class="chip">Atomic transactions</span><span class="chip">Audit logs</span><span class="chip">OWASP</span></div></div>
-<div class="study"><h3 data-i="g5"></h3><div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span></div></div>
-</div></div></section>
-
-<section class="sec" id="work"><div class="wrap"><i class="sq l"></i><i class="sq r"></i>
-<span class="bdg" data-i="pj_b"></span><h2 data-i="pj_h"></h2>
-<div class="pl">
-<article class="pr"><div><h3>Bazar Angola</h3><div class="t" data-i="p1s"></div><p data-i="p1d"></p><a class="lk" href="https://github.com/alcedode">GitHub</a></div><div class="stk"><em>stack</em><br>Laravel API<br>React JS<br>PostgreSQL + PostGIS<br>Redis<br>Docker</div></article>
-<article class="pr"><div><h3>AstraSchool</h3><div class="t" data-i="p2s"></div><p data-i="p2d"></p><a class="lk" href="https://github.com/alcedode">GitHub</a></div><div class="stk"><em>stack</em><br>Laravel<br>React JS<br>MySQL<br>Docker</div></article>
-<article class="pr"><div><h3>Sennder POS</h3><div class="t" data-i="p3s"></div><p data-i="p3d"></p><a class="lk" href="https://github.com/alcedode">GitHub</a></div><div class="stk"><em>stack</em><br>Laravel API<br>React JS (PWA)<br>MySQL<br>Docker</div></article>
-<article class="pr" style="grid-template-columns:1fr"><div><h3>VIVA+</h3><div class="t" data-i="p4s"></div><p data-i="p4d"></p><a class="lk" href="https://pti.ao/viva-vence-premio-de-melhor-startup-do-angotic-2026-com-solucao-para-saude-materna/" data-i="lk2"></a></div></article>
-</div></div></section>
-
-<section class="sec" id="contact" style="overflow:hidden"><div class="glow"></div><div class="noise"></div>
-<div class="wrap"><i class="sq l"></i><i class="sq r"></i>
-<span class="bdg" data-i="ct_b"></span><h2 data-i="ct_h"></h2>
-<p style="margin-top:20px;color:var(--mut);max-width:580px;font-size:19px" data-i="ct_p"></p>
-<div class="ct"><a href="mailto:alcedodev05@gmail.com">Email<span>alcedodev05@gmail.com</span></a><a href="https://wa.me/244921703737">WhatsApp<span>+244 921 703 737</span></a><a href="https://www.linkedin.com/in/alcedo-dev-28574035b">LinkedIn<span>in/alcedo-dev-28574035b</span></a><a href="https://github.com/alcedode">GitHub<span>github.com/alcedode</span></a></div>
-</div></section>
-<dialog id="cvm" aria-labelledby="cvt"><div class="cvi"><button class="cvx" id="cvc" aria-label="Close">&times;</button>
-<h3 id="cvt" data-i="cv_t"></h3><p data-i="cv_p"></p>
-<a class="cvo" data-l="en" download="Alcedo_Madruga_CV_EN.pdf" href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgNyAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0F1dGhvciAoQWxjZWRvIE1hZHJ1Z2EpIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjExMTYwMDE5MjIrMDAnMDAnKSAvQ3JlYXRvciAoXCh1bnNwZWNpZmllZFwpKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjExMTYwMDE5MjIrMDAnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoXCh1bnNwZWNpZmllZFwpKSAvVGl0bGUgKENWIC0gQWxjZWRvIE1hZHJ1Z2EpIC9UcmFwcGVkIC9GYWxzZQo+PgplbmRvYmoKNyAwIG9iago8PAovQ291bnQgMSAvS2lkcyBbIDQgMCBSIF0gL1R5cGUgL1BhZ2VzCj4+CmVuZG9iago4IDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI3MTEKPj4Kc3RyZWFtCkdhdWBVPkJlZjQmcTgwMVImPWhKQzBdTSQlLEVSbD5haWkyKUIuKWUscW0rTlRaMztNUCJbY1xTS0U+TjE6SUJRPmFoYXNYRnN0Y2RUak1TcS5BdUdMSGlOT1MpYVIpSUpFVGojPSFiPCZIJkVbS2AzOWZvRkxwYm5FM1MqZ01aNSE9cmlFblFKN0ZnXC4laTs/SDlzYW5GVFk+JVdHJ2pHdEoyODNNJGRJP3IlJXBaW10qKEgkIihTJTlNQkdScj40XHBYJnBAclZyNnBeWipTSlVLZGBfa2Y8UzRUZktydXFjWl5BRihHVnBWcl5BNy1GZU46KkFnKHNkLmE7OUxdVG1wVk9SciFRVUh1Y2JvRjZlLGdnUUNfYFJYIjsib2BzJzBdbHE7SFo7bVllOlRicXUnIlUpOkFFMCVCU3A0Nj9fLytNVlxYOiY9NVRaMW5sKHRdMTIhR2QsY0w3JlwrbXRjczE3MXBFJSxtPjVNXCYhVXE3RzJQQ2ZaJjoiX0wsMi45bEEta3QhOHVIImpoYmQtTmpzRDswR1VkNSRTdS5JOVJpYE9KPUtcW2FaP2prLVVTY1dLIz5aLWZYQiQ4cDRZP3FebC9LJlcoQS9WMk8wYkx0Sk8sYW5QbUhqdSgySW9Qaz0hVXFTRW1fZmBPUzIvam9NKmIzLVlwKDJsP285RE5SO21kcnBANS8mM2VVYDZbaS42RFNqYXJCNU4lVz44NFMiQ1EsYGN1STZyJSpGcz1gRj5iZkxubTwhZlJzTDowIW1nWE4iVypUJSJcQzZUb3I5RTpnZVlZXUVxQnMhLWIpNE4vdW4hLGtuZV41IyVxU2M+YDUkUENodF5DRFk4XihRcEdCUjFWSFJUT3BnRj5pPztJNWlqOTc1WidPUSQhIWZlOFZaNj81U1E9LC1rJS9OQEw1SiVjc25NXmQyM3A8UTZDYm0pZmBOOkV0XDVAZ0gzRlxtPFNoJE9WRmI/bEpyOD4pMltoaGBpIkQ3N1dQOF4oXy4uTFpwJiJ1QmNyVXJFb0RvPCI0UlVZVHVSa11UNz88WSEpNiZRISUwY0pHPV84Tz07LlwiYDw7IU9tWylEZ3JxUi0vP0k2IWk0dHQ4YE9eSCJzNStlMkliMFk0Z0g5c1dibm44JVIzUkxOPlAxX1hNPEZBcSVHIlJ0WipcYlZDbj9ZbDA9IixvKWdtOm1qQy4nUzpyJlhdTzFgOkEjVFJjUHFiOyonZEpANGxuYEBxU1txaEtYXSMyQCMxQW9GbGtyJ2hGPD9kSUlBM2ZQbl8pQT41bVM5WjU+WCpWZy0sSG9wPDVzJyprZ0NuXzE5W3IwWUNYS1xTIl9xZyw1MDpiIyJsXjkiRGx0KDkjdT5Zb1AvNStTaGdxczcvTUwvXF8zcERPP2J1OiZXUExLIVxJXGpKaCVMWU1nY2ZiImZLRjhANWpZJzdeMl4jaVVFM21zSlpEck9wIVM0JDhyazc6MC4sMUlwOlFHTExdVCtecWNScCQ3OiVsXmpbMXFpZ21KYEpDNj5jPTciR3M0NWJJUHVgWTcnJGM1YVhYZE0tYD1hYlpDdWk0cT5XWENmQzVhdGVxNSdUVjIqSmFaOTIjOio6X18laUc7cGlhQmgyVztCOS45I05URyxdYCVWSCJCbClhQlpZa3FSJmloUCdgVDxMYC1UcktKbGFgbGxNKjUlN0lIbnFcSTRkIT4zYUZYMiErNlFGMSo5WEIkaFwwZFU9VitwZHJJKTFeOE5ydTpSVCtxSWwtNzEsI0FMJl1ILVc2YG9fK0xNcVZaPClMZ1s8QShdWWJqdFI+ZlBJKHV0MTRQOnQyP24iIWtHWkg+TCdCI2FrTTVnJSs0V0MxITQuJyJlY0xGI2hMbEVPOj1lb3JHbSFMQHFgPGwqNUtRcy5pL0kmVmBVOnVKV2pSYUk6OzcyQDNxNz5gTkEnLW1HVHFSLkA7RnI4V2EpY1gncGRNW3BDXzEkYStsQE1cYTldQ21jbSw6YkhdbERdVms9VDNpZG9yJDw/YSVSNy4+Q2ckT3VKbV4zU1ZgUlxfMVx1XEE5KzxlN0tFKmlHT0FnXEMmSFVtQ0Bla1ZYQ2M2NSVVSFA3WUc9UyduXFFjaGk9bkRccHA4TTpwMVZGcmckVSw/WyhmczZXYU40U0tDO28hOE4hbGk0Y3I2KU1cTD4xXm9OQUM8UC05JFg9PVIrWEpKQigiLHRkODUoYUFPTU1FI2suc0IkbCFHMDNmMG5tQHJYUyUtS3U9MXVqT1F0ZUBUPypZLTNLdT0yLkVrR1pBZEpgPTBWPilNR2heP0Q8dHFiUypTPmY6QlRrbktlT1FNVSQ4YDIqRllualloY0chcCFJY29KcXNGR2lxSiI9MFw5YWQsOG5DJyVwMWYmYmpcJCU7KlY6ODwuXjdhaEUiRFZGKjVjKW47TlpqOmckak5WNT5mSmo5XydUIiJMXlkldUcvUWstN2ZZXGBUVWdoZzMmYkRRR25rPTM4QTJsbjhhdEJSOzZAXWc6WHBLWV45YzdwXUl0SzUsOlBtKi83LiZUI21RNmgybj1sZkMrSkRSOEwnKUZkayRcPCYsN0x0QS8pMCUjbEErOmteYCJoUDQ8YmUtNU1lIjtSLmZkOWotWl5iTHJScHM7W1JuMnJgclZGRzQ3Z2htIzA1PFRcNyZLKG0/cUVPVVFXdUk3WjRILUI8XzY6JFBdaSYqbU04TmdNNjU9SF9jXmM4aS5MdUtINjFEZVVdbjxBSFg/ZFI2MGlfVFcybjoiRUFBOlJnWkJTaG4jVVkhZiReVFo4UERcUSNxLzxlUUcoXjtQMTRHPDhMSGk+OD88S0spTmxBP2kjM0YxXFFaYz9iWVZpPEdZaUlXci40bTxwLUJIMz8tSS9RX1ghWVZcXE5ILiteMCRPWFpPZ09bbS9zdWNoaCEjTUNJXW1tKE1fMFJ1OD5LV0AhNGpQSmUiSGFYRUhbVT5fXWxNOEJoSFo6MVJqcitCaSgvYDFzMDZxZDlTKSxLRFQySC1wa15PSSpMZVxLQzZgI2FiNjlCNEZNQXJzS08oZFtXIV04Jm48MUIvdGZmWF1uakU1PDZjaUJecjApTlp1MF9nSj5kKVgiT1NrSlUtZzEpT0xKWmg/Zm1mZHMiLmF1JXMvU1E2VV8kRj9ILk4ma1pVJChzWV48bGUxXzBecydrNCcsc0NBclhuOFI2UmZhXiRvJFs/MikvPEhCaSF0W2FhOXE8PWNFI0pfQTFNRnIuYV9fNjxIRG0oM11ULmc1NXQ9NV5ndF4mMy51RFhFXEJSRXFhbTV1JjpuKHJBJ0BxMU5LcCI5Mzk8XjFgUDk0XVYuKiZGbydPNEB0STpDTzVlZV5VI2dKSUtNLnRtSHEobGhqZEIwRUwlTCYvYC9AUTlSZywybVltL29cdFlHVkU2YyFcN2kjOG4+YVFyQFZDKy8/ZiNGTm1COE0tbEJ1LzdCLU9yN2Ywaik5Iy9ha1JTWjxcKSwuWmYzXGE9ciZbXiQwbCVeRFgrTG80Qi9WQU8+ITk1I21PS1dvdGZhbXRJV1xqKSQ6QjQoRSUnJCY0am42aCYjckU6QT9uTXFRR34+ZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgOQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwNjEgMDAwMDAgbiAKMDAwMDAwMDEwMiAwMDAwMCBuIAowMDAwMDAwMjA5IDAwMDAwIG4gCjAwMDAwMDAzMjEgMDAwMDAgbiAKMDAwMDAwMDUyNCAwMDAwMCBuIAowMDAwMDAwNTkyIDAwMDAwIG4gCjAwMDAwMDA4NzkgMDAwMDAgbiAKMDAwMDAwMDkzOCAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzxlMzBhNGM4NzA4ZjllMzlhZTIyMjk3NzRiMzEzOGNjYj48ZTMwYTRjODcwOGY5ZTM5YWUyMjI5Nzc0YjMxMzhjY2I+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDYgMCBSCi9Sb290IDUgMCBSCi9TaXplIDkKPj4Kc3RhcnR4cmVmCjM3NDAKJSVFT0YK"><b>English</b><span>PDF · EN</span></a>
-<a class="cvo" data-l="pt" download="Alcedo_Madruga_CV_PT.pdf" href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgNyAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0F1dGhvciAoQWxjZWRvIE1hZHJ1Z2EpIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjExMTYwMDE5MjIrMDAnMDAnKSAvQ3JlYXRvciAoXCh1bnNwZWNpZmllZFwpKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjExMTYwMDE5MjIrMDAnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoXCh1bnNwZWNpZmllZFwpKSAvVGl0bGUgKENWIC0gQWxjZWRvIE1hZHJ1Z2EpIC9UcmFwcGVkIC9GYWxzZQo+PgplbmRvYmoKNyAwIG9iago8PAovQ291bnQgMSAvS2lkcyBbIDQgMCBSIF0gL1R5cGUgL1BhZ2VzCj4+CmVuZG9iago4IDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI4MDUKPj4Kc3RyZWFtCkdhdWBVOTZdKVwoPmVwaWdmNUcvIVgmZlE2LWowNCxFPVFPOUZQbyFoQHVuMlB0NG9OLGElTWJxPTQmXjRWMExnQSZoPWQqdWRqJmg9b3NBKFBnYD5FVXBsblItODNXWT9qPE9cMjllPmowXnVmXlNCOUpfPW4mMDRSKU5CPylSL2MuMSNpUDBDXEhMVCFtQU8yWF0jXDpITGNAOFM/Iz02ZlQiJz5dT2xxRE85VDAlYy80dVNtOVk+XzkoZjpaYlsiZkojMlxNUi1kRUFDaClpbzI9JGIoPkAkQ0xqRSxIOyo1NDUoPG83ZyM0Y2BjQVlOTCk/JkM+Q3VeQygpLG41UmAxclpbVWIxcU4qcypOYjlzR0pdNjZOI0hkZWBBRkYjLFBtJXExPjJNbWxsZmBGPTM3ck1ILG1OYUldKHFARXM6PmshRHByI24kbCsvWU1UN2hxMlo0X2g0VD1qUm4xcCFpTURLLS5eKjFqamcjcyxZUDk1ZGwkPUVEPyYrI1QjPnRbRCM9TEQ2VGFCaGRoPlBZXigrTyZuOXRZSHE7WWxqa1EwKmsqUF5aV0ZlXGw1dFwoOyklRyxJRjRyREk0N19tckNTQTxackFNVkIwZkZaTCREMlJgcXIlUUM6a0tScVVvIjdCJjY9YCFlP2dNWmclPjZoPixKTVYzVG1MI2k3Wk5IYl5Mcm51Vz4mTUIpRT1wVV4wKUU8NlhtKj1kVm1oclRcZjpdaSpYaHBJT2RCc0pRZzkyQThrUjtZcj84NmZGcj5bb240Zk8uMlloam5ZRCc+Jy5CXTZsNXIuOjBpaichXzdTYCFeOVlYMEItVzpcMUxmb0gyVG5rJ2dsO1QpXilJJm8hUkJhI2o2bVxnazc3KShOJFlAMlktSU9OX2VJK1dNK2hxWlFgRjgkZkNIdC1mKjFvXV4iQUJ1NThRJWEuIjw3aXInPXA6SE5HMFRzJ2s6J29hcyVPck4mKjdJYltyJFwsKS9KaXBMaGkiWlwiVilbdEVpaCg2UCZPR1BqJz0xVUBzbj0+amc3LT5BQ3BiQlVtKUtPKTwpQypEZytyK2JeNiZrLF1wIWZzKjBgaWF0M1Y4QitTQ2RIZSVpNT02ZXEjJE43W2QvUm47Sk01Ky5rITdIcU5SVGRsLk1kRVBxN202cyc2SF4hbyZUODY0MCRfPiJrNC9sbzQsYWJPaDcxWlJoISY4TGdVcGFDSGVVLUZkcWMqT2JBSEFEZChGNWw6NlAzQiRDb1ZIIy9uMWhJMnApQ0Y9OTNyNiMubnQlIyhnbGZEJ0dBSSdAOFg5JSZHKiwnMEkxPHI6P0w6OyY6L1JNNiprKnIxOVZqaDluJGNMZV1CQihMaHFoXTVyTSZXcG9bXTI9JmQ7Ukg4cipcQjdZV11KVjJOT2slMm9QNEo7N1ApcCttYyg8WThVLSNKRGltckE1RmpRWyomdWVsc3BySUxIW0s1dFNlMUdyLkt1WDkqLzNCKSJydSdTTTJyOEs3PSRuJ1QxIkkiZVlsPkRXYGoncXI0bmFfZzxfI0NEc1FYIm5lMydhJChHNC4nIkBnZj84aCkiVD5ZQz5QZi9PRWg5UiRVKVldbFhNOi9oW1EjQXMuWFtValtBNmJWRXNCS2cvSkFCWGVIbjBMTkdXczI8W1ovWjtJRE8uWl5aaFVtN0o+TS1CPmckNUU5K1JkO2BbNF9TQTtYP0BHOz4scGlrcGZuXE9XJi5eZExGSURGbD8rLWcpYXVFaz9lTitxQ29VXkRSJkxBSi82YTRKM0tyQklVT1UzYlBjRWwxPjhWQWdMQTxOKXFRQypvV1VybkNUdHJRUy9WaV5payNFZkA2aV1gXCg9bi4jYmlBQzw/JTMlb1NLc0pHaHFPbjNxMlw3QUBoR0wxayVMT1hsT0VKSWkhbktOWFs5IydkbVZHWEdARUc7ay9Pc0VTVEMiJSQrSUxZQDVCWCZbS2BGMWk+VWNtUFgwPW1wQE9TSEw3IyxoNVRpQWs6PFlsITV1dTkyTlo6O1hBPitUSjMnJl1WJW49R1coM15mP05ydU5sPVhgdExhYUtSbj41UEYoNkFhKywuUXNbU0EndGZ1KzdFc00/RWkha0olYWc1aD84bSxDTSMnPEk8XXReWChDaEtbXCIuI0hiZF89REE4JzRbM3A8dE9jLzAzXGNBbFdYRldCPTFYN0hnNidGZDE6K2tCNnJkMjUzSm1RKD5mZVVsNmxjcmQrKmQoRHJHKExpTCE6JjwsR0ZZM01NcF8lQjZxYkxMMG8oZmU/PmJvLT84RlcxXi9bRychMWIoOm0iXylCL24mX2twLygpVi1VJChiL2NJZ0hgaXEwMCZPcj8zcjc8LnBsXjVhVXJMcHFzYitUIV07QF0yamRLcE1qQHFiVXUnKCUnJ1o2S1huaFJHYGhiYz91RllobDE2ai0wJDNKcC11Vk5UR1lmblcyKUY7T2QxWkYoOztAUGtySjwrYUswQ2VVOWtKLk90IUcuWWt1K1BqPFYmUSUqamNAMmU1NjBdS2YlN3VGRCUqJzksXi8oa1BIPkksYjtfKmJSPnFFI0tfU1UuIiUnXC5TNTNHL2xFXSVxI1RKOTlSU2xSTCxoIUNROiFwZTx0a2M7WC9uNEVWb3UkPG8uLUVcX0U9RUpTRmlMJkVASTcwSDprX1MrJDwndWZgUStWT2pZNy0nZ0UkcSozL2pFVjA0TSEjLz5eWFZJOkM+Oy4tTG5aRmw/cUxFYlxvU29iIkg6ZEEnRUMiJjtZJSVIUlZXakJyK05KUGk1JFtnSGUySGpcc2M1IUdaQEk+Tk88YmQ/S04mOmtHKiglWCx1ZkNNYGpEJV1tVTpjKWRHPGUqPjUuMyhMczFWU2Y3dGpAYC1lclM0b2dMMTIkLkVqajlYaEYpJjdfOXNdWUxVYydaTzlNP14xVjtYMT1QVjRBYGtjRmVSOUEqRSQtJCMiYDhaW3UlRidgW1ZSTElLXWBNVFo2KGIxKFZAQ2JBSVVqQFA9Zj1kT15rN0AqTClnKSovSXVVOFQrbSxjX2BGdGFVMEk3TydaSypSSVxYVEFfPWxCQ1gxTilCJzcnOFB1X1lBLF01YSpZYi1WQG44ZC0+OCs3PXE6YWpkNUcoZCVTOyM4Qm9jYSM3LVNZYCIrZF9NTUBgLk83QSJXSW4ib0UpNk5ONCsmO1g6Z0gjKTBGL3JOTi4sYj5IREkiKjxdLDskOU1PNGBXcGtrZmwscXJsZl9MImchaEk+VWdNcj1bWF9WYlNXS1U4LSNRMCxcUVBmImU6I1NCWHRNSUpAXjk9azZsUS8xLkYyXzg7J0EoZC4xTTN1KlAsRCMtTGFMdDo2NSZvS0A0X0xraUJxMkAnXVQoQm9EIW5KL1Y2ME4rQj1KWWZFMm4qPk4+aWkrRC4tRGFmMXB0V2NWcVg1TEZbSlNcWnVIZD5xMWxTI1UkaDVoajw8cThEU21jO20sImJGN1FINWYwOFFXQkEnZXVrXV9aLyMuLDFSSi1oLVtFaXVxdV8mdUxxY2xJZmJWSjBXVVA+PjZCUXM8VVpVISZCTWhJSWFaR21nM0VoY2dybyY4IXVJQEs8cC0/YDM9I2gyWWlYczZJcm4mIWAiR3EmW04+XDkyZTwlXi5vWipBdTAvT0JdSF8oYEpsVUYuUDJEakE0Mko8RDBbZypWP242OCosUzFgOD86KD85SF1RcnJMZFUvJT5+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDkKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDYxIDAwMDAwIG4gCjAwMDAwMDAxMDIgMDAwMDAgbiAKMDAwMDAwMDIwOSAwMDAwMCBuIAowMDAwMDAwMzIxIDAwMDAwIG4gCjAwMDAwMDA1MjQgMDAwMDAgbiAKMDAwMDAwMDU5MiAwMDAwMCBuIAowMDAwMDAwODc5IDAwMDAwIG4gCjAwMDAwMDA5MzggMDAwMDAgbiAKdHJhaWxlcgo8PAovSUQgCls8ZjFmNzRjNGUwYjVhMGZiYTI5MWQxZjdkZWJhMDMxNjA+PGYxZjc0YzRlMGI1YTBmYmEyOTFkMWY3ZGViYTAzMTYwPl0KJSBSZXBvcnRMYWIgZ2VuZXJhdGVkIFBERiBkb2N1bWVudCAtLSBkaWdlc3QgKG9wZW5zb3VyY2UpCgovSW5mbyA2IDAgUgovUm9vdCA1IDAgUgovU2l6ZSA5Cj4+CnN0YXJ0eHJlZgozODM0CiUlRU9GCg=="><b>Português</b><span>PDF · PT</span></a>
-</div></dialog>
-<footer>© 2026 Alcedo Madruga</footer>
-
-<script>
-var T={
-n1:["About","Sobre","À propos"],n2:["Stack","Stack","Stack"],n3:["Projects","Projetos","Projets"],n4:["Contact","Contacto","Contact"],
-b1:["[ 6+ years · Laravel · React JS · Vue.js ]","[ 6+ anos · Laravel · React JS · Vue.js ]","[ 6+ ans · Laravel · React JS · Vue.js ]"],
-role:["Senior Laravel, React JS & Vue.js engineer · Bié, Angola","Engenheiro sénior Laravel, React JS & Vue.js · Bié, Angola","Ingénieur senior Laravel, React JS & Vue.js · Bié, Angola"],
-sub:["With 6+ years of experience, I design robust back-ends in Laravel and fast interfaces in React and Vue.js, split into services and shipped in Docker. REST APIs, payments and invoicing built to keep working when the connection doesn’t.","Com mais de 6 anos de experiência, projeto back-ends robustos em Laravel e interfaces rápidas em React e Vue.js, divididos em serviços e entregues em Docker. APIs REST, pagamentos e facturação feitos para continuar a funcionar mesmo sem ligação.","Avec plus de 6 ans d’expérience, je conçois des back-ends robustes en Laravel et des interfaces rapides en React et Vue.js, découpés en services et livrés avec Docker. APIs REST, paiements et facturation conçus pour fonctionner même hors connexion."],
-c1:["Send an email","Enviar e-mail","Envoyer un e-mail"],
-f1:["Best Start-up, ANGOTIC 2026","Melhor Start-up, ANGOTIC 2026","Meilleure start-up, ANGOTIC 2026"],
-f2:["6+ years with Laravel, React JS and Vue.js in production","Mais de 6 anos com Laravel, React JS e Vue.js em produção","Plus de 6 ans avec Laravel, React JS et Vue.js en production"],
-f3:["WAT timezone (UTC+1), open to remote work","Fuso WAT (UTC+1), disponível para trabalho remoto","Fuseau WAT (UTC+1), disponible en télétravail"],
-run:["3 services · all healthy","3 serviços · todos saudáveis","3 services · tous sains"],
-ab_b:["[ About ]","[ Sobre ]","[ À propos ]"],
-ab_h:["Robust systems, split into services.","Sistemas robustos, divididos em serviços.","Des systèmes robustes, découpés en services."],
-ab_p1:["I’m Alcedo Madruga, a software engineer with 6+ years of experience in Laravel, React JS and Vue.js, with Docker for every environment. I turn large systems into small services with clear boundaries, exposed through well-designed REST APIs.","Sou o Alcedo Madruga, engenheiro de software com mais de 6 anos de experiência em Laravel, React JS e Vue.js, com Docker em todos os ambientes. Transformo sistemas grandes em serviços pequenos com fronteiras claras, expostos por APIs REST bem desenhadas.","Je suis Alcedo Madruga, ingénieur logiciel avec plus de 6 ans d’expérience en Laravel, React JS et Vue.js, avec Docker dans chaque environnement. Je transforme les grands systèmes en petits services aux frontières claires, exposés par des APIs REST bien conçues."],
-ab_p2:["I’m part of the VIVA+ team with Isabel Sapesse, a smart wristband and app for maternal health, named Best Start-up at ANGOTIC 2026 and winner of FETIC Bié.","Faço parte da equipa VIVA+ com a Isabel Sapesse, uma pulseira inteligente e app para saúde materna, eleita Melhor Start-up no ANGOTIC 2026 e vencedora do FETIC Bié.","Je fais partie de l’équipe VIVA+ avec Isabel Sapesse, un bracelet connecté et une app pour la santé maternelle, élue meilleure start-up à l’ANGOTIC 2026 et lauréate du FETIC Bié."],
-edu_t:["Computer Engineering, in progress","Engenharia Informática, em curso","Génie informatique, en cours"],
-edu_s:["Instituto Superior Politécnico Ndunduma. Currently studying Java.","Instituto Superior Politécnico Ndunduma. A estudar Java.","Instituto Superior Politécnico Ndunduma. J’étudie actuellement Java."],
-fc1t:["Clean architecture","Arquitectura limpa","Architecture propre"],fc1p:["Controllers, services and domain logic kept apart, so code stays testable and easy to change.","Controllers, serviços e lógica de domínio separados, para código testável e fácil de alterar.","Contrôleurs, services et logique métier séparés : un code testable et facile à faire évoluer."],
-fc2t:["Services and queues","Serviços e filas","Services et files"],fc2p:["Heavy work moves to queues and events, so the API stays fast under load.","O trabalho pesado vai para filas e eventos, mantendo a API rápida sob carga.","Le travail lourd passe par files et événements : l’API reste rapide sous charge."],
-fc3t:["Money handled with care","Dinheiro com rigor","L’argent, avec rigueur"],fc3p:["Atomic transactions, audit logs and the most common OWASP risks covered.","Transacções atómicas, registos de auditoria e os riscos OWASP mais comuns cobertos.","Transactions atomiques, journaux d’audit et principaux risques OWASP couverts."],
-st_b:["[ Tech stack ]","[ Tecnologias ]","[ Technologies ]"],st_h:["Laravel with React and Vue. 6+ years.","Laravel com React e Vue. Mais de 6 anos.","Laravel avec React et Vue. Plus de 6 ans."],
-g4:["Architecture","Arquitectura","Architecture"],g5:["Currently studying","A estudar","En cours d’étude"],
-pj_b:["[ Projects ]","[ Projetos ]","[ Projets ]"],pj_h:["Built with Laravel and React.","Feitos com Laravel e React.","Réalisés avec Laravel et React."],
-p1s:["Multi-vendor marketplace","Marketplace multi-lojas","Marketplace multi-vendeurs"],p1d:["Connects shoppers with nearby stores. Search by distance, real-time order tracking and a dashboard per store with role-based permissions.","Liga compradores a lojas próximas. Pesquisa por distância, acompanhamento de encomendas em tempo real e painel por loja com permissões por função.","Relie les acheteurs aux boutiques proches. Recherche par distance, suivi de commande en temps réel et tableau de bord par boutique avec rôles."],
-p2s:["School management and invoicing (SaaS)","Gestão escolar e facturação (SaaS)","Gestion scolaire et facturation (SaaS)"],p2d:["Enrolment, grades, report cards and accounting. Invoicing follows Angola’s AGT rules, with withholding tax and document hashing, and each school’s data is isolated.","Matrículas, notas, boletins e contabilidade. A facturação segue as regras da AGT, com retenção na fonte e hash de documentos, e os dados de cada escola ficam isolados.","Inscriptions, notes, bulletins et comptabilité. La facturation suit les règles de l’AGT, avec retenue à la source et hachage des documents ; les données de chaque école sont isolées."],
-p3s:["Offline-first point of sale","Ponto de venda offline-first","Point de vente hors ligne"],p3d:["Checkout that keeps selling and invoicing without internet and syncs with the API when the connection returns. Licence tied to the machine.","Caixa que continua a vender e facturar sem internet e sincroniza com a API quando a ligação volta. Licença associada à máquina.","Caisse qui continue de vendre et facturer sans internet et se synchronise avec l’API au retour de la connexion. Licence liée à la machine."],
-p4s:["Smart wristband for maternal health","Pulseira inteligente para saúde materna","Bracelet connecté pour la santé maternelle"],p4d:["Platform that tracks vital signs and sends emergency alerts. Winner at ANGOTIC 2026 and FETIC Bié.","Plataforma que monitoriza sinais vitais e envia alertas de emergência. Vencedora no ANGOTIC 2026 e FETIC Bié.","Plateforme qui suit les signes vitaux et envoie des alertes d’urgence. Lauréate de l’ANGOTIC 2026 et du FETIC Bié."],
-lk2:["Read the news story","Ler a notícia","Lire l’article"],
-ct_b:["[ Contact ]","[ Contacto ]","[ Contact ]"],ct_h:["Let’s build something that lasts.","Vamos construir algo duradouro.","Construisons quelque chose de durable."],
-ct_p:["Open to international teams in full stack or back-end roles, and to software architecture consulting.","Disponível para equipas internacionais em funções full stack ou back-end e consultoria de arquitectura de software.","Disponible pour des équipes internationales en full stack ou back-end, et pour du conseil en architecture logicielle."],
-cv_t:["Download my CV","Descarregar o meu CV","Télécharger mon CV"],cv_p:["Choose a language.","Escolhe o idioma.","Choisissez la langue."],
-n5:["Experience","Experiência","Expérience"],dl:["Download CV","Descarregar CV","Télécharger le CV"],
-s1:["years of experience","anos de experiência","ans d’expérience"],s2:["projects built","projectos construídos","projets réalisés"],s3:["awards","prémios","prix"],s4:["companies","empresas","entreprises"],
-ex_b:["[ Experience ]","[ Experiência ]","[ Expérience ]"],ex_h:["Where I’ve built it.","Onde o construí.","Où je l’ai construit."],
-x1r:["Full-Stack Developer","Programador Full-Stack","Développeur full-stack"],
-x1a:["Built front-end and back-end features for custom web applications.","Desenvolvi funcionalidades front-end e back-end para aplicações web à medida.","Développement de fonctionnalités front-end et back-end pour des applications web sur mesure."],
-x1b:["Worked with REST APIs and databases across the full stack.","Trabalhei com APIs REST e bases de dados em toda a stack.","Travail sur des APIs REST et des bases de données sur toute la stack."],
-x2r:["Backend Developer · Agency","Programador Backend · Agência","Développeur backend · Agence"],
-x2a:["Built backend services and APIs for client projects.","Construí serviços backend e APIs para projectos de clientes.","Création de services backend et d’APIs pour des projets clients."],
-x2b:["Handled server-side logic and databases in client-facing web apps.","Tratei da lógica de servidor e das bases de dados em aplicações web para clientes.","Gestion de la logique serveur et des bases de données d’applications web clients."]};
-var R=document.documentElement;
-function setL(n){document.querySelectorAll('[data-i]').forEach(function(e){e.textContent=T[e.dataset.i][n]});
-R.lang=['en','pt','fr'][n];document.querySelectorAll('.lg button').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.l===n)});try{localStorage.setItem('l',n)}catch(e){}}
-var s=0;try{s=+localStorage.getItem('l')||0}catch(e){}
-if(!s){var nl=(navigator.language||'en').slice(0,2);s=nl==='pt'?1:nl==='fr'?2:0}
-setL(s);
-document.querySelectorAll('.lg button').forEach(function(b){b.onclick=function(){setL(+b.dataset.l)}});
-document.querySelectorAll('.tab').forEach(function(b){b.onclick=function(){
-document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected',x===b)});
-document.querySelectorAll('pre[data-p]').forEach(function(p){p.hidden=p.dataset.p!==b.dataset.t})}});
-document.getElementById('tg').onclick=function(){var d=R.dataset.theme?R.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;R.dataset.theme=d?'light':'dark'};
-var bar=document.getElementById('bar');
-addEventListener('scroll',function(){bar.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'},{passive:true});
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll('.links a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
-document.querySelectorAll('section[id]').forEach(function(x){io.observe(x)});
-var st=document.getElementById('stats');
-function cnt(c){var n=+c.dataset.c;if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;var t0=performance.now();(function f(t){var p=Math.min((t-t0)/1500,1);c.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
-st.querySelectorAll('div').forEach(function(d,i){d.style.setProperty('--d',i*.1+'s')});
-new IntersectionObserver(function(es,o){if(es[0].isIntersecting){st.classList.add('on');st.querySelectorAll('[data-c]').forEach(cnt);o.disconnect()}},{threshold:.3}).observe(st);
-var dm=document.getElementById('cvm');
-document.getElementById('dlb').onclick=function(){var l=R.lang==='pt'?'pt':'en';dm.querySelectorAll('.cvo').forEach(function(a){a.classList.toggle('rec',a.dataset.l===l)});dm.showModal()};
-document.getElementById('cvc').onclick=function(){dm.close()};
-dm.onclick=function(e){if(e.target===dm)dm.close()};
-dm.querySelectorAll('.cvo').forEach(function(a){a.onclick=function(e){e.preventDefault();var u=a.getAttribute('href');
-fetch(u).then(function(r){return r.blob()}).then(function(bl){var x=document.createElement('a');x.href=URL.createObjectURL(bl);x.download=a.getAttribute('download');document.body.appendChild(x);x.click();x.remove();setTimeout(function(){dm.close()},300)}).catch(function(){window.open(u)})}});
 </script>
 </body>
 </html>
